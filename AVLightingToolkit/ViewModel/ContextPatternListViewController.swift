@@ -49,7 +49,7 @@ class ContextPatternListViewController: UIViewController, UITableViewDelegate, U
         addView.addConstraint(NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal, toItem: addView, attribute: .bottom, multiplier: 1, constant: 0))
 
         view.delegate = self
-        
+    
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -111,6 +111,7 @@ extension ContextPatternListViewController: AddItemFooterViewDelegate, OverlayHo
         let addContextViewController = showOverlay(type: AddContextViewController.self, fromStoryboardWithName: "Main")
         
         newContextEntry = Context(context: coreDataStack.mainContext)
+        newContextEntry?.position = Int16(fetchedResultsController.fetchedObjects?.count ?? 0)
         
         addContextViewController?.controllerTitle = AddContextViewControllerTitle.newContext
         addContextViewController?.contextEntry = newContextEntry
@@ -190,7 +191,7 @@ private extension ContextPatternListViewController {
     func contextFetchRequest() -> NSFetchRequest<Context> {
         let fetchRequest:NSFetchRequest<Context> = Context.fetchRequest()
         
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Context.name), ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Context.position), ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         return fetchRequest

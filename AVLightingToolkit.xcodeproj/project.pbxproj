@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A978121FC0E515ED3BFCB34 /* Pods_AVLightingToolkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */; };
 		7E0208B721C3490C00BFE354 /* AddItemFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0208B621C3490C00BFE354 /* AddItemFooterView.xib */; };
 		7E0208B921C34AA700BFE354 /* AddItemFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */; };
 		7E69890221C1DCF400BDBE8C /* CustomiseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890121C1DCF400BDBE8C /* CustomiseTableViewCell.swift */; };
@@ -29,6 +30,9 @@
 		7ED946CC21CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED946C821CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift */; };
 		7ED946CD21CBA3AC006A66A9 /* Context+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED946C921CBA3AC006A66A9 /* Context+CoreDataClass.swift */; };
 		7ED946CE21CBA3AC006A66A9 /* Context+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED946CA21CBA3AC006A66A9 /* Context+CoreDataProperties.swift */; };
+		7EF0902C21D642F4002D7DBB /* LEDController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0902B21D642F4002D7DBB /* LEDController.swift */; };
+		AF18C04D81C3046E9794C787 /* Pods_AVLightingToolkitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4CED09F2E53963E6E22CE8 /* Pods_AVLightingToolkitTests.framework */; };
+		E0192222A89B24A6B9145E10 /* Pods_AVLightingToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BE48C8B1FF7E814E8EA711 /* Pods_AVLightingToolkit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27057838E3CF1A5FE8BAAC6F /* Pods-AVLightingToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.release.xcconfig"; sourceTree = "<group>"; };
+		2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.debug.xcconfig"; sourceTree = "<group>"; };
+		6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitTests/Pods-AVLightingToolkitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E0208B621C3490C00BFE354 /* AddItemFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemFooterView.xib; sourceTree = "<group>"; };
 		7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFooterView.swift; sourceTree = "<group>"; };
 		7E69890121C1DCF400BDBE8C /* CustomiseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomiseTableViewCell.swift; sourceTree = "<group>"; };
@@ -77,6 +84,13 @@
 		7ED946C821CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LightPattern+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7ED946C921CBA3AC006A66A9 /* Context+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Context+CoreDataClass.swift"; sourceTree = "<group>"; };
 		7ED946CA21CBA3AC006A66A9 /* Context+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Context+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7EF0902B21D642F4002D7DBB /* LEDController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LEDController.swift; sourceTree = "<group>"; };
+		924EB9446E16DB4F7C456D38 /* Pods-AVLightingToolkitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitUITests/Pods-AVLightingToolkitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		96BE48C8B1FF7E814E8EA711 /* Pods_AVLightingToolkit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVLightingToolkit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE4CED09F2E53963E6E22CE8 /* Pods_AVLightingToolkitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVLightingToolkitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVLightingToolkitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDB72F21DB916486523787BD /* Pods-AVLightingToolkitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitTests/Pods-AVLightingToolkitTests.release.xcconfig"; sourceTree = "<group>"; };
+		E9287E1300DC0EE6F6A07950 /* Pods-AVLightingToolkitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitUITests/Pods-AVLightingToolkitUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0192222A89B24A6B9145E10 /* Pods_AVLightingToolkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF18C04D81C3046E9794C787 /* Pods_AVLightingToolkitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,12 +114,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A978121FC0E515ED3BFCB34 /* Pods_AVLightingToolkitUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E79B181882EAF6FDA9E185C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				96BE48C8B1FF7E814E8EA711 /* Pods_AVLightingToolkit.framework */,
+				AE4CED09F2E53963E6E22CE8 /* Pods_AVLightingToolkitTests.framework */,
+				BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		274DE2B114F8EADFE199A5B9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */,
+				27057838E3CF1A5FE8BAAC6F /* Pods-AVLightingToolkit.release.xcconfig */,
+				6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */,
+				DDB72F21DB916486523787BD /* Pods-AVLightingToolkitTests.release.xcconfig */,
+				E9287E1300DC0EE6F6A07950 /* Pods-AVLightingToolkitUITests.debug.xcconfig */,
+				924EB9446E16DB4F7C456D38 /* Pods-AVLightingToolkitUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7E69890521C20C7A00BDBE8C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +177,7 @@
 			children = (
 				7E73D32B21CF6100003A4C22 /* CoreDataStack.swift */,
 				7E8D8BE021CB88180051FF3B /* ImageUtils.swift */,
+				7EF0902B21D642F4002D7DBB /* LEDController.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -148,6 +189,8 @@
 				7ED93E1721BA1257008EC776 /* AVLightingToolkitTests */,
 				7ED93E2221BA1257008EC776 /* AVLightingToolkitUITests */,
 				7ED93DFE21BA1253008EC776 /* Products */,
+				274DE2B114F8EADFE199A5B9 /* Pods */,
+				1E79B181882EAF6FDA9E185C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ED93E2821BA1257008EC776 /* Build configuration list for PBXNativeTarget "AVLightingToolkit" */;
 			buildPhases = (
+				FF084474CBC826416F8C2E20 /* [CP] Check Pods Manifest.lock */,
 				7ED93DF921BA1252008EC776 /* Sources */,
 				7ED93DFA21BA1252008EC776 /* Frameworks */,
 				7ED93DFB21BA1252008EC776 /* Resources */,
+				29DD026FF101885202A27AEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +263,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ED93E2B21BA1257008EC776 /* Build configuration list for PBXNativeTarget "AVLightingToolkitTests" */;
 			buildPhases = (
+				F9841812457AAC692F570802 /* [CP] Check Pods Manifest.lock */,
 				7ED93E1021BA1257008EC776 /* Sources */,
 				7ED93E1121BA1257008EC776 /* Frameworks */,
 				7ED93E1221BA1257008EC776 /* Resources */,
@@ -236,6 +282,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7ED93E2E21BA1257008EC776 /* Build configuration list for PBXNativeTarget "AVLightingToolkitUITests" */;
 			buildPhases = (
+				E9ED80B61E09EBE08FFDF4E0 /* [CP] Check Pods Manifest.lock */,
 				7ED93E1B21BA1257008EC776 /* Sources */,
 				7ED93E1C21BA1257008EC776 /* Frameworks */,
 				7ED93E1D21BA1257008EC776 /* Resources */,
@@ -322,6 +369,97 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29DD026FF101885202A27AEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9ED80B61E09EBE08FFDF4E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVLightingToolkitUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9841812457AAC692F570802 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVLightingToolkitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF084474CBC826416F8C2E20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVLightingToolkit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7ED93DF921BA1252008EC776 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -334,6 +472,7 @@
 				7ED946CE21CBA3AC006A66A9 /* Context+CoreDataProperties.swift in Sources */,
 				7ED946CD21CBA3AC006A66A9 /* Context+CoreDataClass.swift in Sources */,
 				7ED93E0921BA1253008EC776 /* AVLightingToolkit.xcdatamodeld in Sources */,
+				7EF0902C21D642F4002D7DBB /* LEDController.swift in Sources */,
 				7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */,
 				7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */,
 				7ED946CB21CBA3AC006A66A9 /* LightPattern+CoreDataClass.swift in Sources */,
@@ -520,6 +659,7 @@
 		};
 		7ED93E2921BA1257008EC776 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -538,6 +678,7 @@
 		};
 		7ED93E2A21BA1257008EC776 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27057838E3CF1A5FE8BAAC6F /* Pods-AVLightingToolkit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -556,6 +697,7 @@
 		};
 		7ED93E2C21BA1257008EC776 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -577,6 +719,7 @@
 		};
 		7ED93E2D21BA1257008EC776 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDB72F21DB916486523787BD /* Pods-AVLightingToolkitTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -598,6 +741,7 @@
 		};
 		7ED93E2F21BA1257008EC776 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9287E1300DC0EE6F6A07950 /* Pods-AVLightingToolkitUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -618,6 +762,7 @@
 		};
 		7ED93E3021BA1257008EC776 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 924EB9446E16DB4F7C456D38 /* Pods-AVLightingToolkitUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
