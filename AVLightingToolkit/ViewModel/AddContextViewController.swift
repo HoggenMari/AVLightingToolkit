@@ -45,7 +45,8 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
     // MARK: Properties
     var contextEntry: Context? {
         didSet {
-            updateContextEntry()
+            //updateContextEntry()
+            configureView()
         }
     }
     var context: NSManagedObjectContext!
@@ -71,6 +72,19 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
+        configureView()
+        //updateContextEntry()
+    }
+    
+    func configureView() {
+        guard let entry = contextEntry else { return }
+
+        name.text = entry.name
+        guard let filename = entry.imageFilename else {
+            return
+        }
+        self.filename = filename
+        backgroundImage.image = ImageUtils.getImageFromDocumentPath(for: filename)
     }
     
     func updateContextEntry() {
@@ -78,7 +92,7 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
         
         entry.name = name.text
         entry.imageFilename = filename
-
+        
     }
 
     @IBAction func addContext(_ sender: Any) {

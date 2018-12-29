@@ -18,34 +18,48 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="car" translatesAutoresizingMaskIntoConstraints="NO" id="0rl-hZ-5jo">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                    <gestureRecognizers/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ4-1J-cPW">
-                    <rect key="frame" x="10" y="27" width="355" height="30"/>
+                    <rect key="frame" x="10" y="27" width="64" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuK-YJ-x1W">
+                    <rect key="frame" x="292" y="22" width="73" height="40"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="sIl-TX-EQq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="MZ4-1J-cPW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="C3j-gs-wOX"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="MZ4-1J-cPW" secondAttribute="trailing" constant="10" id="F6T-y6-81T"/>
                 <constraint firstItem="MZ4-1J-cPW" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ITH-Gj-Oc6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0rl-hZ-5jo" secondAttribute="bottom" id="Pvh-e2-TAt"/>
                 <constraint firstItem="0rl-hZ-5jo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SNg-BR-QeW"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0rl-hZ-5jo" secondAttribute="trailing" id="Vxb-dv-Dta"/>
                 <constraint firstItem="0rl-hZ-5jo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hEn-5a-GqM"/>
+                <constraint firstItem="OuK-YJ-x1W" firstAttribute="centerY" secondItem="MZ4-1J-cPW" secondAttribute="centerY" id="htX-rM-G6l"/>
+                <constraint firstItem="OuK-YJ-x1W" firstAttribute="trailing" secondItem="0rl-hZ-5jo" secondAttribute="trailing" constant="-10" id="nNO-LD-7MQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="contextImage" destination="0rl-hZ-5jo" id="QM9-ol-ypO"/>
                 <outlet property="contextTitle" destination="MZ4-1J-cPW" id="4DO-J8-2rO"/>
+                <outlet property="deleteButton" destination="OuK-YJ-x1W" id="RRg-QO-Nba"/>
             </connections>
             <point key="canvasLocation" x="152.80000000000001" y="362.51874062968517"/>
         </view>
     </objects>
     <resources>
-        <image name="car" width="917" height="611"/>
+        <image name="car" width="2842" height="764"/>
     </resources>
 </document>

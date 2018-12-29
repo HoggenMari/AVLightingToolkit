@@ -1,16 +1,20 @@
 PODS:
+  - SwiftIcons (2.3.2)
   - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
+  - SwiftIcons (~> 2.3.2)
   - SwiftSocket
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - SwiftIcons
     - SwiftSocket
 
 SPEC CHECKSUMS:
+  SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 5ad7af6fd5121eef0850b0aa423cc94aa10f5456
+PODFILE CHECKSUM: 08c49e0b714f10cc89f6dba64cd3c9c82fe23075
 
 COCOAPODS: 1.5.3

@@ -32,30 +32,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvV-QQ-D0j">
-                                                    <rect key="frame" x="184" y="5" width="1" height="90"/>
+                                                    <rect key="frame" x="279" y="5" width="1" height="90"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="nY9-eI-4TE"/>
                                                     </constraints>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gj-vE-zli">
-                                                    <rect key="frame" x="17" y="38.5" width="23" height="23"/>
+                                                    <rect key="frame" x="17" y="38.5" width="118" height="23"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="23" id="WTa-4j-GHS"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="WTa-4j-GHS"/>
                                                         <constraint firstAttribute="height" constant="23" id="Xp5-6x-MRh"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.36629826729175502" green="0.41066936368842966" blue="0.51269035532994922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="Button" image="radio_button_off"/>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brightness_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="iSS-XY-i6I">
-                                                    <rect key="frame" x="54" y="7" width="120" height="85.5"/>
+                                                    <rect key="frame" x="149" y="7" width="120" height="85.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="85.5" id="Fvc-oS-4eN"/>
                                                         <constraint firstAttribute="width" constant="120" id="W5x-dZ-JhN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaT-V4-Xfq">
-                                                    <rect key="frame" x="195" y="7" width="50" height="24"/>
+                                                    <rect key="frame" x="290" y="7" width="50" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -160,6 +160,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="7TM-lQ-jQl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fgb-eE-xHZ" secondAttribute="leading" constant="20" symbolic="YES" id="8wc-rb-yNj"/>
                                     <constraint firstAttribute="trailing" secondItem="7TM-lQ-jQl" secondAttribute="trailing" constant="23" id="NnL-Mu-ZMF"/>
                                     <constraint firstAttribute="height" constant="60" id="pY4-XZ-2fJ"/>
                                 </constraints>
@@ -180,7 +181,7 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qS-22-wfJ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3qS-22-wfJ">
                                 <rect key="frame" x="40" y="122" width="537.5" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="KFB-0R-9jN"/>
@@ -196,7 +197,7 @@
                                     <constraint firstAttribute="height" constant="150" id="L5u-o8-LXW"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gKe-pd-PFk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lightpattern" id="gKe-pd-PFk">
                                         <rect key="frame" x="0.0" y="28" width="537.5" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gKe-pd-PFk" id="Ugf-ae-mus">
@@ -211,6 +212,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YeY-lu-M1a" secondAttribute="trailing" constant="20" symbolic="YES" id="1o8-Or-3zN"/>
                                                 <constraint firstItem="YeY-lu-M1a" firstAttribute="centerY" secondItem="Ugf-ae-mus" secondAttribute="centerY" id="Gkv-8b-qbV"/>
                                                 <constraint firstItem="YeY-lu-M1a" firstAttribute="leading" secondItem="Ugf-ae-mus" secondAttribute="leading" constant="9" id="JJp-hC-Saw"/>
                                             </constraints>
@@ -296,16 +298,6 @@
             </objects>
             <point key="canvasLocation" x="1523" y="1355"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="qEp-Rb-pe3">
-            <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="t5C-ld-NYU" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Root View Controller" id="etp-nV-Ydi"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="10V-cx-b8n" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1399" y="2133"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="yTJ-RE-EYn">
             <objects>
@@ -338,7 +330,7 @@
     </scenes>
     <resources>
         <image name="brightness_pattern" width="400" height="280"/>
-        <image name="car" width="917" height="611"/>
+        <image name="car" width="2842" height="764"/>
         <image name="radio_button_off" width="64" height="64"/>
     </resources>
 </document>

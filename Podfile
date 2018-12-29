@@ -7,6 +7,7 @@ target 'AVLightingToolkit' do
 
   # Pods for AVLightingToolkit
   pod 'SwiftSocket'
+  pod 'SwiftIcons', '~> 2.3.2'
 
   target 'AVLightingToolkitTests' do
     inherit! :search_paths

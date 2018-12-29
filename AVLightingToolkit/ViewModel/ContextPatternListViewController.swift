@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftIcons
 
 class ContextPatternListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -60,7 +61,14 @@ class ContextPatternListViewController: UIViewController, UITableViewDelegate, U
         let sections = fetchedResultsController.fetchedObjects?[section]
         
         headerView.contextTitle.text = sections?.name
+        headerView.deleteButton.setIcon(icon: .googleMaterialDesign(.delete), iconSize: 40, color: .white, forState: .normal)
+        headerView.delegate = self
+        headerView.section = section
+        headerView.tag = section
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sectionHeaderTapped(sender:)))
+        headerView.addGestureRecognizer(tapGesture)
+
         guard let filename = sections?.imageFilename, let image = ImageUtils.getImageFromDocumentPath(for: filename) else {
             headerView.contextImage.image = UIImage(named: "car")
             return headerView
@@ -117,7 +125,7 @@ extension ContextPatternListViewController: AddItemFooterViewDelegate, OverlayHo
         addContextViewController?.contextEntry = newContextEntry
         addContextViewController?.context = newContextEntry?.managedObjectContext
         addContextViewController?.delegate = self
-            }
+    }
     
     func addLightingPatternTapped() {
         print("addLightPatternButtonTapped")
@@ -169,6 +177,38 @@ extension ContextPatternListViewController: ContextEntryDelegate {
     }
     
 }
+
+extension ContextPatternListViewController: ContextHeaderViewDelegate {
+    func deleteButtonTapped(at section: Int) {
+        deleteContext(at: section)
+    }
+    
+    @objc func sectionHeaderTapped(sender: UIGestureRecognizer) {
+        
+        guard let section = sender.view?.tag, let contextEntry = fetchedResultsController.fetchedObjects?[section] else {
+            return
+        }
+        
+        //let contextEntry = fetchedResultsController.fetchedObjects?[section]
+        
+        let childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        childContext.parent = coreDataStack.mainContext
+        
+        let childEntry = childContext.object(with: contextEntry.objectID) as? Context
+        
+        let addContextViewController = showOverlay(type: AddContextViewController.self, fromStoryboardWithName: "Main")
+        
+        addContextViewController?.controllerTitle = AddContextViewControllerTitle.editContext
+        addContextViewController?.contextEntry = childEntry
+        addContextViewController?.context = childContext
+        addContextViewController?.delegate = self
+        
+        
+    }
+    
+    
+}
+
 // MARK: NSFetchedResultsController
 private extension ContextPatternListViewController {
     
@@ -195,6 +235,22 @@ private extension ContextPatternListViewController {
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         return fetchRequest
+    }
+    
+    func deleteContext(at section: Int) {
+        let sections = fetchedResultsController.fetchedObjects?[section]
+        coreDataStack.mainContext.delete(sections!)
+        coreDataStack.saveContext()
+        
+        guard let sectionUpperBound = fetchedResultsController.fetchedObjects?.count, sectionUpperBound > section + 1 else {
+            return
+        }
+        
+        for n in section...sectionUpperBound - 1 {
+            let context = fetchedResultsController.fetchedObjects?[n]
+            context?.position = Int16(n)
+            coreDataStack.saveContext()
+        }
     }
     
 }
