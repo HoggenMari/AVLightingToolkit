@@ -4,7 +4,7 @@ protocol CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath)
 }
 
-class CustomiseTableViewCell: UITableViewCell {
+class LightPatternTableViewCell: UITableViewCell {
     
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var radioButton: UIButton!
@@ -55,7 +55,7 @@ class CustomiseTableViewCell: UITableViewCell {
         let indexPaths = tableView.indexPathsForVisibleRows
         for indexPath in indexPaths! {
             if indexPath.row != tappedCellIndexPath.row && indexPath.section == tappedCellIndexPath.section {
-                let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section)) as! CustomiseTableViewCell
+                let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section)) as! LightPatternTableViewCell
                 cell.radioButton.isSelected = false
             }
         }

@@ -1,84 +1,71 @@
 //
-//  MessageViewController.swift
-//  OverlayViewController
+//  AddLightPatternViewController.swift
+//  AVLightingToolkit
 //
-//  Created by Andrey Gordeev on 4/17/17.
-//  Copyright © 2017 Andrey Gordeev (andrew8712@gmail.com). All rights reserved.
+//  Created by Marius Hoggenmüller on 29.12.18.
+//  Copyright © 2018 Marius Hoggenmüller. All rights reserved.
 //
 
-import UIKit
-import Photos
+import Foundation
 import CoreData
+import UIKit
 
-enum AddContextViewControllerTitle {
-    case newContext
-    case editContext
+enum EditLightPatternTitle {
+    case newLightPattern
+    case editLightPattern
     
     var description : String {
         switch self {
         // Use Internationalization, as appropriate.
-        case .newContext: return "New Context"
-        case .editContext: return "Edit Context"
+        case .newLightPattern: return "New Light Pattern"
+        case .editLightPattern: return "Edit Light Pattern"
         }
     }
     
 }
 
 // MARK: JournalEntryDelegate
-protocol ContextEntryDelegate {
-    func didFinish(viewController: AddContextViewController, didSave: Bool)
+protocol LightPatternEntryDelegate {
+    func didFinish(viewController: EditLightPatternVC, didSave: Bool)
 }
 
-class AddContextViewController: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
     let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
                                       height: UIScreen.main.bounds.height * 0.6)
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var previewImageButton: UIButton!
     
-    var managedObjectContext: NSManagedObjectContext!
-
     var filename: String?
     
-    // MARK: Properties
-    var contextEntry: Context? {
-        didSet {
-            //updateContextEntry()
-            configureView()
-        }
-    }
     var context: NSManagedObjectContext!
-    var delegate: ContextEntryDelegate?
-    var controllerTitle: AddContextViewControllerTitle = AddContextViewControllerTitle.newContext {
-        
+    var delegate: LightPatternEntryDelegate?
+    var controllerTitle: EditLightPatternTitle = EditLightPatternTitle.newLightPattern {
         didSet {
             titleLabel.text = controllerTitle.description
         }
     }
     
-    // MARK: - Core Data stack
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "AVLightingToolkit")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
+    // MARK: Properties
+    var lightPatternEntry: LightPattern? {
+        didSet {
+            configureView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
+        previewImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
         configureView()
-        //updateContextEntry()
     }
-    
-    func configureView() {
-        guard let entry = contextEntry else { return }
 
+    func configureView() {
+        guard let entry = lightPatternEntry else { return }
+        
         name.text = entry.name
         guard let filename = entry.imageFilename else {
             return
@@ -87,17 +74,17 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
         backgroundImage.image = ImageUtils.getImageFromDocumentPath(for: filename)
     }
     
-    func updateContextEntry() {
-        guard let entry = contextEntry else { return }
+    func updateLightPatternEntry() {
+        guard let entry = lightPatternEntry else { return }
         
         entry.name = name.text
         entry.imageFilename = filename
         
     }
-
+    
     @IBAction func addContext(_ sender: Any) {
-        updateContextEntry()
-        if let titleName = contextEntry?.name, !titleName.isEmpty {
+        updateLightPatternEntry()
+        if let titleName = lightPatternEntry?.name, !titleName.isEmpty {
             delegate?.didFinish(viewController: self, didSave: true)
             dismissOverlay()
         } else {
@@ -106,16 +93,14 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
             self.present(alert, animated: true, completion: nil)
         }
     }
-
+    
     @IBAction func close(_ sender: Any) {
         delegate?.didFinish(viewController: self, didSave: false)
         dismissOverlay()
-
+        
     }
     
-    
     @IBAction func selectBackgroundImage(_ sender: Any) {
-        print("selectBackgroundImageTapped")
         openGallery()
     }
     
@@ -144,6 +129,4 @@ class AddContextViewController: UIViewController, OverlayViewController, UIImage
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
 }
-
