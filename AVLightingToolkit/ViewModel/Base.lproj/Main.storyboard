@@ -32,30 +32,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvV-QQ-D0j">
-                                                    <rect key="frame" x="279" y="5" width="1" height="90"/>
+                                                    <rect key="frame" x="179" y="5" width="1" height="90"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="nY9-eI-4TE"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gj-vE-zli">
-                                                    <rect key="frame" x="17" y="38.5" width="118" height="23"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gj-vE-zli" customClass="PlayButton" customModule="AVLightingToolkit" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="7" width="44" height="85.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="WTa-4j-GHS"/>
-                                                        <constraint firstAttribute="height" constant="23" id="Xp5-6x-MRh"/>
+                                                        <constraint firstAttribute="width" secondItem="5gj-vE-zli" secondAttribute="height" multiplier="40:80" constant="1" id="YgY-ZZ-B5H"/>
                                                     </constraints>
                                                     <color key="tintColor" red="0.36629826729175502" green="0.41066936368842966" blue="0.51269035532994922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" title="Button" image="radio_button_off"/>
+                                                    <state key="normal" title="Button"/>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brightness_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="iSS-XY-i6I">
-                                                    <rect key="frame" x="149" y="7" width="120" height="85.5"/>
+                                                    <rect key="frame" x="49" y="7" width="120" height="85.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="85.5" id="Fvc-oS-4eN"/>
                                                         <constraint firstAttribute="width" constant="120" id="W5x-dZ-JhN"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaT-V4-Xfq">
-                                                    <rect key="frame" x="290" y="7" width="50" height="24"/>
+                                                    <rect key="frame" x="190" y="7" width="50" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -78,22 +78,24 @@
                                             <constraints>
                                                 <constraint firstItem="kvV-QQ-D0j" firstAttribute="leading" secondItem="iSS-XY-i6I" secondAttribute="trailing" constant="10" id="0tB-Qe-IJF"/>
                                                 <constraint firstItem="FX1-Al-d7Y" firstAttribute="top" secondItem="Yny-Ug-Xow" secondAttribute="top" constant="7" id="ARd-E7-zsh"/>
+                                                <constraint firstItem="5gj-vE-zli" firstAttribute="top" secondItem="iSS-XY-i6I" secondAttribute="top" id="BlY-ab-H61"/>
                                                 <constraint firstAttribute="bottom" secondItem="kvV-QQ-D0j" secondAttribute="bottom" constant="4.5" id="FRs-U3-A0e"/>
                                                 <constraint firstItem="GaT-V4-Xfq" firstAttribute="top" secondItem="iSS-XY-i6I" secondAttribute="top" id="JgQ-97-yVi"/>
                                                 <constraint firstItem="J1z-z0-CFW" firstAttribute="top" secondItem="kvV-QQ-D0j" secondAttribute="top" id="MUg-He-Fbc"/>
                                                 <constraint firstItem="J1z-z0-CFW" firstAttribute="bottom" secondItem="kvV-QQ-D0j" secondAttribute="bottom" id="PUh-fU-x8D"/>
-                                                <constraint firstItem="5gj-vE-zli" firstAttribute="leading" secondItem="Yny-Ug-Xow" secondAttribute="leading" constant="17" id="Rkf-t7-nAt"/>
+                                                <constraint firstItem="5gj-vE-zli" firstAttribute="leading" secondItem="Yny-Ug-Xow" secondAttribute="leading" constant="5" id="Rkf-t7-nAt" userLabel="Radio Button.leading = leading "/>
                                                 <constraint firstAttribute="trailing" secondItem="FX1-Al-d7Y" secondAttribute="trailing" constant="17" id="UpD-7U-qtF"/>
                                                 <constraint firstItem="iSS-XY-i6I" firstAttribute="centerY" secondItem="Yny-Ug-Xow" secondAttribute="centerY" id="Vj3-og-aeR"/>
                                                 <constraint firstItem="5gj-vE-zli" firstAttribute="centerY" secondItem="Yny-Ug-Xow" secondAttribute="centerY" id="ZzU-ct-yR8"/>
                                                 <constraint firstAttribute="bottom" secondItem="FX1-Al-d7Y" secondAttribute="bottom" constant="10.5" id="d23-ev-gsa"/>
                                                 <constraint firstItem="J1z-z0-CFW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GaT-V4-Xfq" secondAttribute="trailing" constant="8" symbolic="YES" id="dbh-09-ii5"/>
+                                                <constraint firstItem="5gj-vE-zli" firstAttribute="bottom" secondItem="iSS-XY-i6I" secondAttribute="bottom" id="eBi-Ac-ZsL"/>
                                                 <constraint firstItem="kvV-QQ-D0j" firstAttribute="top" secondItem="Yny-Ug-Xow" secondAttribute="top" constant="5" id="mUa-OA-mYG"/>
                                                 <constraint firstAttribute="bottom" secondItem="iSS-XY-i6I" secondAttribute="bottom" constant="7" id="rHO-L0-V4I"/>
                                                 <constraint firstItem="GaT-V4-Xfq" firstAttribute="leading" secondItem="kvV-QQ-D0j" secondAttribute="trailing" constant="10" id="rey-iX-1aZ"/>
                                                 <constraint firstItem="iSS-XY-i6I" firstAttribute="top" secondItem="Yny-Ug-Xow" secondAttribute="top" constant="7" id="sPw-am-MwS"/>
                                                 <constraint firstItem="FX1-Al-d7Y" firstAttribute="leading" secondItem="J1z-z0-CFW" secondAttribute="trailing" constant="6" id="wEB-CD-Lmp"/>
-                                                <constraint firstItem="iSS-XY-i6I" firstAttribute="leading" secondItem="5gj-vE-zli" secondAttribute="trailing" constant="14" id="yLK-Oh-zea"/>
+                                                <constraint firstItem="iSS-XY-i6I" firstAttribute="leading" secondItem="5gj-vE-zli" secondAttribute="trailing" id="yLK-Oh-zea"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -134,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2305" y="650"/>
+            <point key="canvasLocation" x="2304.6875" y="649.8046875"/>
         </scene>
         <!--Edit ContextVC-->
         <scene sceneID="VlZ-Xu-C1M">
@@ -197,39 +199,38 @@
                                     <constraint firstAttribute="height" constant="150" id="L5u-o8-LXW"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lightpattern" rowHeight="10" id="gKe-pd-PFk" customClass="AddLightPatternToContextTableViewCell" customModule="AVLightingToolkit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="537.5" height="10"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lightpattern" rowHeight="40" id="gKe-pd-PFk" customClass="AddLightPatternToContextTableViewCell" customModule="AVLightingToolkit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="537.5" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gKe-pd-PFk" id="Ugf-ae-mus">
-                                            <rect key="frame" x="0.0" y="0.0" width="537.5" height="10"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="537.5" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6f-ub-jIC">
-                                                    <rect key="frame" x="25" y="2.5" width="5" height="5"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqU-Xi-443" customClass="CheckBox" customModule="AVLightingToolkit" customModuleProvider="target">
+                                                    <rect key="frame" x="5" y="2" width="36" height="36"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Y6f-ub-jIC" secondAttribute="height" multiplier="1:1" id="nSh-ye-A9Z"/>
+                                                        <constraint firstAttribute="width" secondItem="eqU-Xi-443" secondAttribute="height" multiplier="1:1" id="KDJ-Ok-cDJ"/>
                                                     </constraints>
-                                                    <color key="tintColor" red="0.36629826729999998" green="0.41066936370000001" blue="0.51269035529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <state key="normal" image="radio_button_off"/>
+                                                    <state key="normal" title="Button"/>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Pattern" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dte-g7-bvq">
-                                                    <rect key="frame" x="43" y="-5.5" width="99" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6R-kd-NRc">
+                                                    <rect key="frame" x="44" y="9" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="dte-g7-bvq" firstAttribute="leading" secondItem="Y6f-ub-jIC" secondAttribute="trailing" constant="13" id="B15-9z-srF"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dte-g7-bvq" secondAttribute="trailing" constant="20" symbolic="YES" id="R0b-GU-ee1"/>
-                                                <constraint firstItem="Y6f-ub-jIC" firstAttribute="centerY" secondItem="dte-g7-bvq" secondAttribute="centerY" id="Unr-jU-wiJ"/>
-                                                <constraint firstItem="Y6f-ub-jIC" firstAttribute="height" secondItem="Ugf-ae-mus" secondAttribute="height" multiplier="0.5" id="geI-6y-iY1"/>
-                                                <constraint firstItem="Y6f-ub-jIC" firstAttribute="centerY" secondItem="Ugf-ae-mus" secondAttribute="centerY" id="wgO-IO-djq"/>
-                                                <constraint firstItem="Y6f-ub-jIC" firstAttribute="leading" secondItem="Ugf-ae-mus" secondAttribute="leadingMargin" constant="10" id="xO2-jm-4JC"/>
+                                                <constraint firstItem="r6R-kd-NRc" firstAttribute="leading" secondItem="eqU-Xi-443" secondAttribute="trailing" constant="3" id="Zfy-7g-Sqb"/>
+                                                <constraint firstItem="eqU-Xi-443" firstAttribute="height" secondItem="Ugf-ae-mus" secondAttribute="height" multiplier="0.9" id="eJS-nX-23W"/>
+                                                <constraint firstItem="r6R-kd-NRc" firstAttribute="centerY" secondItem="Ugf-ae-mus" secondAttribute="centerY" id="g1W-sy-lgz"/>
+                                                <constraint firstItem="eqU-Xi-443" firstAttribute="leading" secondItem="Ugf-ae-mus" secondAttribute="leading" constant="5" id="xSL-no-1ep"/>
+                                                <constraint firstItem="eqU-Xi-443" firstAttribute="centerY" secondItem="Ugf-ae-mus" secondAttribute="centerY" id="xUh-jQ-81A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="itemLabel" destination="dte-g7-bvq" id="NPl-BJ-AOp"/>
+                                            <outlet property="button" destination="eqU-Xi-443" id="VRI-nq-uhS"/>
+                                            <outlet property="itemLabel" destination="r6R-kd-NRc" id="Hok-gW-kbn"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -479,6 +480,5 @@
     <resources>
         <image name="brightness_pattern" width="400" height="280"/>
         <image name="car" width="2842" height="764"/>
-        <image name="radio_button_off" width="64" height="64"/>
     </resources>
 </document>

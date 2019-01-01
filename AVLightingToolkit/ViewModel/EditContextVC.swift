@@ -30,19 +30,22 @@ protocol ContextEntryDelegate {
     func didFinish(viewController: EditContextVC, didSave: Bool)
 }
 
-class EditContextVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NSFetchedResultsControllerDelegate {
+class EditContextVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
                                       height: UIScreen.main.bounds.height * 0.6)
     
-    lazy var coreDataStack = CoreDataStack(modelName: "AVLightingToolkit")
-    var lightPatternFetchedRC: NSFetchedResultsController<LightPattern> = NSFetchedResultsController()
-
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var backgroundImageButton: UIButton!
     @IBOutlet weak var lightPatternTableView: UITableView!
+    @IBAction func buttonPressed(_ sender: Any) {
+        print("test")
+    }
+    @IBAction func buttonPress(_ sender: Any) {
+        print("test")
+    }
     
     var filename: String?
     
@@ -69,8 +72,6 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
         
         lightPatternTableView.delegate = self
         lightPatternTableView.dataSource = self
-        
-        lightPatternFetchedRC = lightPatternFetchedResultsController()
         
         configureView()
     }
@@ -141,47 +142,33 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
         }
         picker.dismiss(animated: true, completion: nil)
     }
-
-    func lightPatternFetchedResultsController() -> NSFetchedResultsController<LightPattern> {
-        let fetchedResultController = NSFetchedResultsController(fetchRequest: lightPatternFetchRequest(),
-                                                                 managedObjectContext: coreDataStack.mainContext,
-                                                                 sectionNameKeyPath: nil,
-                                                                 cacheName: nil)
-        fetchedResultController.delegate = self
-        
-        do {
-            try fetchedResultController.performFetch()
-        } catch let error as NSError {
-            fatalError("Error: \(error.localizedDescription)")
-        }
-        
-        return fetchedResultController
-    }
-    
-    func lightPatternFetchRequest() -> NSFetchRequest<LightPattern> {
-        let fetchRequest:NSFetchRequest<LightPattern> = LightPattern.fetchRequest()
-        
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(LightPattern.name), ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        return fetchRequest
-    }
 }
 
 extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lightPatternFetchedRC.fetchedObjects?.count ?? 0
+        return PersistentUtils.sharedInstance.lightPatternFetchedResultsController().fetchedObjects?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:AddLightPatternToContextTableViewCell =
             tableView.dequeueReusableCell(withIdentifier: "lightpattern") as! AddLightPatternToContextTableViewCell
+        cell.initCell(at: indexPath.row)
         
-        let pattern = lightPatternFetchedRC.object(at: indexPath)
-        
+        let pattern = PersistentUtils.sharedInstance.lightPatternFetchedResultsController().object(at: indexPath)
         cell.itemLabel?.text = pattern.name
+        cell.delegate = self
         
+        if let patternLength = contextEntry?.lightpatterns?.count, patternLength > 0 {
+            for n in 0...patternLength-1 {
+                let p = contextEntry?.lightpatterns?.allObjects[n] as! LightPattern
+                if p.isEqualTo(pattern) {
+                    cell.button?.isChecked = true
+                    return cell
+                }
+            }
+        }
+
         return cell
     }
     
@@ -189,5 +176,28 @@ extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
         return 30
     }
     
-    
+}
+
+extension EditContextVC: LightPatternSelectedDelegate {
+    func didToggleLightPatternCheckbox(patternWith index: Int, checked: Bool) {
+        print(String(index)+""+String(checked))
+        
+        guard let pattern = PersistentUtils.sharedInstance.lightPatternFetchedResultsController().fetchedObjects?[index] else {
+            return
+        }
+        
+        if checked {
+            contextEntry?.addToLightpatterns(pattern)
+        } else {
+            if let patternLength = contextEntry?.lightpatterns?.count, patternLength > 0 {
+                for n in 0...patternLength-1 {
+                    let p = contextEntry?.lightpatterns?.allObjects[n] as! LightPattern
+                    if p.isEqualTo(pattern) {
+                        contextEntry?.removeFromLightpatterns(p)
+                        return
+                    }
+                }
+            }
+        }
+    }
 }

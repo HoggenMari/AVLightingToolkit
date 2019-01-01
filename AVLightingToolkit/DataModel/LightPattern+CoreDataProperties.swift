@@ -20,5 +20,29 @@ extension LightPattern {
     @NSManaged public var imageFilename: String?
     @NSManaged public var name: String?
     @NSManaged public var context: Context?
+    
+    public func isEqualTo(_ object: Any?) -> Bool {
+        return
+            name == (object as? LightPattern)?.name
+    }
 
 }
+
+// MARK: Generated accessors for lightpatterns
+extension LightPattern {
+    
+    @objc(addContextObject:)
+    @NSManaged public func addContextObject(_ value: Context)
+    
+    @objc(removeContextObject:)
+    @NSManaged public func removeContextObject(_ value: Context)
+    
+    @objc(addContexts:)
+    @NSManaged public func addContextObject(_ values: NSSet)
+    
+    @objc(removeContexts:)
+    @NSManaged public func removeContextObject(_ values: NSSet)
+    
+}
+
+

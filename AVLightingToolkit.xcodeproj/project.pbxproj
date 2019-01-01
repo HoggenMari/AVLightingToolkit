@@ -12,6 +12,7 @@
 		7E0208B921C34AA700BFE354 /* AddItemFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */; };
 		7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */; };
 		7E1C3D0921D7457800278D29 /* AddLightPatternToContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */; };
+		7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F831021D8E90900188CE6 /* PersistentUtils.swift */; };
 		7E69890221C1DCF400BDBE8C /* LightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */; };
 		7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */; };
 		7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */; };
@@ -62,6 +63,7 @@
 		7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFooterView.swift; sourceTree = "<group>"; };
 		7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLightPatternVC.swift; sourceTree = "<group>"; };
 		7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLightPatternToContextTableViewCell.swift; sourceTree = "<group>"; };
+		7E4F831021D8E90900188CE6 /* PersistentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentUtils.swift; sourceTree = "<group>"; };
 		7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternTableViewCell.swift; sourceTree = "<group>"; };
 		7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextHeaderView.swift; sourceTree = "<group>"; };
 		7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextHeaderView.xib; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				7E73D32B21CF6100003A4C22 /* CoreDataStack.swift */,
 				7E8D8BE021CB88180051FF3B /* ImageUtils.swift */,
 				7EF0902B21D642F4002D7DBB /* LEDController.swift */,
+				7E4F831021D8E90900188CE6 /* PersistentUtils.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */,
 				7ED93E0321BA1253008EC776 /* ContextLightPatternListVC.swift in Sources */,
 				7ED946CC21CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift in Sources */,
 				7E0208B921C34AA700BFE354 /* AddItemFooterView.swift in Sources */,
