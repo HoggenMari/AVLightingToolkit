@@ -66,8 +66,18 @@ extension OverlayViewController where Self: UIViewController {
             containerView.frame = CGRect(x: x, y: y, width: overlaySize.width, height: overlaySize.height)
         } else {
             // No overlaySize provided. By default we have small paddings at every edge.
-            containerView.frame = parentBounds.insetBy(dx: parentBounds.width*0.05,
-                                                       dy: parentBounds.height*0.05)
+            var x: CGFloat = 0, y: CGFloat = 0
+            var overlaySize = CGSize.zero
+            if UIDevice.current.orientation.isLandscape {
+                overlaySize = CGSize(width: parentBounds.width*0.9, height: parentBounds.height*0.5)
+                x = (parentBounds.width - overlaySize.width) * 0.5
+                y = (parentBounds.height - overlaySize.height) * 0.2
+            } else {
+                overlaySize = CGSize(width: parentBounds.width*0.9, height: parentBounds.height*0.6)
+                x = (parentBounds.width - overlaySize.width) * 0.5
+                y = (parentBounds.height - overlaySize.height) * 0.3
+            }
+            containerView.frame = CGRect(x: x, y: y, width: overlaySize.width, height: overlaySize.height)
         }
 
         // Adding a shadow.

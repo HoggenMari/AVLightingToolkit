@@ -32,20 +32,15 @@ protocol ContextEntryDelegate {
 
 class EditContextVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
-                                      height: UIScreen.main.bounds.height * 0.6)
+    /*let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
+                                      height: UIScreen.main.bounds.height * 0.6)*/
+    let heightForRow: CGFloat = 30
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var backgroundImageButton: UIButton!
     @IBOutlet weak var lightPatternTableView: UITableView!
-    @IBAction func buttonPressed(_ sender: Any) {
-        print("test")
-    }
-    @IBAction func buttonPress(_ sender: Any) {
-        print("test")
-    }
     
     var filename: String?
     
@@ -74,6 +69,12 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
         lightPatternTableView.dataSource = self
         
         configureView()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        delegate?.didFinish(viewController: self, didSave: false)
+        dismissOverlay()
     }
     
     func configureView() {
@@ -173,7 +174,7 @@ extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+        return heightForRow
     }
     
 }

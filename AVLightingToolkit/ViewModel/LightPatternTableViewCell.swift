@@ -14,7 +14,6 @@ class LightPatternTableViewCell: UITableViewCell {
     var delegate: CustomTableViewCellDelegate?
     
     func initCellItem() {
-        
         radioButton.addTarget(self, action: #selector(self.radioButtonTapped), for: .touchUpInside)
                 
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.itemImageTapped))
@@ -29,32 +28,14 @@ class LightPatternTableViewCell: UITableViewCell {
     }
     
     @objc func itemImageTapped(_ imageItem: UIImage) {
-        print("image item tapped")
-        radioButton.buttonClicked(sender: radioButton)
+        radioButton.isChecked = !radioButton.isChecked
         itemTapped()
     }
     
     func itemTapped() {
-        print("radio button tapped")
-        let isChecked = self.radioButton.isChecked
-        if isChecked {
-            deselectOtherButton()
-        }
         let tableView = self.superview as! UITableView
         let tappedCellIndexPath = tableView.indexPath(for: self)!
         delegate?.didToggleRadioButton(tappedCellIndexPath)
-    }
-    
-    func deselectOtherButton() {
-        let tableView = self.superview as! UITableView
-        let tappedCellIndexPath = tableView.indexPath(for: self)!
-        let indexPaths = tableView.indexPathsForRows(in: tableView.frame)
-        for indexPath in indexPaths! {
-            if indexPath.row != tappedCellIndexPath.row && indexPath.section == tappedCellIndexPath.section {
-                let cell = tableView.cellForRow(at: IndexPath(row: indexPath.row, section: indexPath.section)) as! LightPatternTableViewCell
-                cell.radioButton.isChecked = false
-            }
-        }
     }
     
 }

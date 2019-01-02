@@ -30,9 +30,6 @@ protocol LightPatternEntryDelegate {
 }
 
 class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
-    let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
-                                      height: UIScreen.main.bounds.height * 0.6)
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -61,6 +58,12 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         previewImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
         configureView()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        delegate?.didFinish(viewController: self, didSave: false)
+        dismissOverlay()
     }
 
     func configureView() {

@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftSocket
+import JavaScriptCore
 
 class LEDController {
     
@@ -19,32 +20,39 @@ class LEDController {
 
     var client: UDPClient?
     var data: Data?
-    var timer: Timer!
+    weak var timer: Timer!
+    
+    var red = NSString(format:"%2X", 100) as String
 
     var n = 16
     
     init() {
         client = UDPClient(address: IP_ADDRESS, port: PORT)
     
-        timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
     @objc func runTimedCode() {
         data = Data()
         data?.append(header)
         
-        let red = NSString(format:"%2X", n) as String
+        let context = JSContext()
+        context?.evaluateScript("var loop = function(numLEDs,frameRate) { var leds = []; for (i=0; i<numLEDs; i++) { leds.push(frameRate);}return leds;}")
         
-        for _ in 1...10 {
-            data?.append(Data(hex:red))
-            data?.append(Data(hex:"a0b0"))
+        let tripleFunction = context?.objectForKeyedSubscript("loop")
+        let result = tripleFunction?.call(withArguments: [10,n])?.toArray() as! [Int]
+        
+        for i in 0...9 {
+            data?.append(Data(hex:String(result[i])))
+            data?.append(Data(hex:String(20)))
+            data?.append(Data(hex:String(20)))
         }
         
         if let sendData = data {
             client?.send(data: sendData)
         }
         
-        if n >= 100 {
+        if n >= 80 {
             n = 16
         } else {
             n+=1

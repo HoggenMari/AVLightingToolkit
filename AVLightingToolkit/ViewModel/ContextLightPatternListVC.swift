@@ -12,6 +12,9 @@ import SwiftIcons
 
 class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let addViewHeight: CGFloat = 70
+    let heightForFooterInSection: CGFloat = 15
+    
     var managedObjectContext: NSManagedObjectContext!
     
     @IBOutlet var lightPatternTableView: UITableView!
@@ -20,7 +23,6 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     
     var newContextEntry: Context?
     var newLightPatternEntry: LightPattern?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +37,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         lightPatternTableView.delegate = self
         lightPatternTableView.dataSource = self
         
-        addViewHeightConstraint.constant = 70
+        addViewHeightConstraint.constant = addViewHeight
         
         let view = Bundle.main.loadNibNamed("AddItemFooterView", owner: nil, options: nil)![0] as! AddItemFooterView
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,14 +50,6 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
 
         view.delegate = self
     
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("viewappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        print("viewdisappear")
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -85,8 +79,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-
-        return 15
+        return heightForFooterInSection
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -109,13 +102,20 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             tableView.dequeueReusableCell(withIdentifier: "cell") as! LightPatternTableViewCell
         cell.initCellItem()
         
+        guard let section = PersistentUtils.sharedInstance.contextFetchedResultsController().fetchedObjects?[indexPath.section] else {
+            return cell
+        }
+        
         let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.name), ascending: true)]
 
         guard let pattern = PersistentUtils.sharedInstance.contextFetchedResultsController().fetchedObjects?[indexPath.section].lightpatterns?.sortedArray(using: sortDescriptor)[indexPath.row] as? LightPattern else {
             return cell
         }
         
+        cell.radioButton.isChecked = section.selected?.isEqualTo(pattern) ?? false
+        
         cell.itemLabel?.text = pattern.name
+        cell.delegate = self
         
         return cell
         
@@ -123,9 +123,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
 }
 
 extension ContextLightPatternListVC: AddItemFooterViewDelegate, OverlayHost {
-    func addContextButtonTapped() {
-        print("addContextButtonTapped")
-        
+    func addContextButtonTapped() {        
         let addContextViewController = showOverlay(type: EditContextVC.self, fromStoryboardWithName: "Main")
         
         newContextEntry = Context(context: PersistentUtils.sharedInstance.coreDataStack.mainContext)
@@ -140,8 +138,6 @@ extension ContextLightPatternListVC: AddItemFooterViewDelegate, OverlayHost {
     }
     
     func addLightingPatternTapped() {
-        print("addLightPatternButtonTapped")
-        
         let addLightPatternViewController = showOverlay(type: EditLightPatternVC.self, fromStoryboardWithName: "Main")
         
         newLightPatternEntry = LightPattern(context: PersistentUtils.sharedInstance.coreDataStack.mainContext)
@@ -156,7 +152,15 @@ extension ContextLightPatternListVC: AddItemFooterViewDelegate, OverlayHost {
 
 extension ContextLightPatternListVC: CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath) {
-        //do nothing
+        let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.name), ascending: true)]
+
+        guard let pattern = PersistentUtils.sharedInstance.contextFetchedResultsController().fetchedObjects?[indexPath.section].lightpatterns?.sortedArray(using: sortDescriptor)[indexPath.row] as? LightPattern else {
+            return
+        }
+        PersistentUtils.sharedInstance.contextFetchedResultsController().fetchedObjects?[indexPath.section].selected = pattern
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        lightPatternTableView.reloadData()
+        
     }
 }
 
@@ -216,6 +220,8 @@ extension ContextLightPatternListVC: ContextHeaderViewDelegate {
     }
     
     @objc func sectionHeaderTapped(sender: UIGestureRecognizer) {
+        
+        newContextEntry = nil
         
         guard let section = sender.view?.tag, let contextEntry = PersistentUtils.sharedInstance.contextFetchedResultsController().fetchedObjects?[section] else {
             return

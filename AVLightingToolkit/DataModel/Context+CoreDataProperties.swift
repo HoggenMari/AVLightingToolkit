@@ -21,6 +21,8 @@ extension Context {
     @NSManaged public var name: String?
     @NSManaged public var position: Int16
     @NSManaged public var lightpatterns: NSSet?
+    @NSManaged public var selected: LightPattern?
+
 
 }
 
@@ -38,5 +40,11 @@ extension Context {
 
     @objc(removeLightpatterns:)
     @NSManaged public func removeFromLightpatterns(_ values: NSSet)
+    
+    @objc(addSelectedObject:)
+    @NSManaged public func addSelectedObject(_ value: LightPattern)
+    
+    @objc(removeSelectedObject:)
+    @NSManaged public func removeSelectedObject(_ value: LightPattern)
 
 }
