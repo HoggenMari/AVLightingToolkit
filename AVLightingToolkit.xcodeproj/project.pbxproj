@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0A978121FC0E515ED3BFCB34 /* Pods_AVLightingToolkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */; };
-		7E0208B721C3490C00BFE354 /* AddItemFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0208B621C3490C00BFE354 /* AddItemFooterView.xib */; };
-		7E0208B921C34AA700BFE354 /* AddItemFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */; };
 		7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */; };
 		7E1C3D0921D7457800278D29 /* AddLightPatternToContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */; };
+		7E378BD521DDBA5D00E69B09 /* LightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378BD421DDBA5D00E69B09 /* LightPatternVC.swift */; };
 		7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F831021D8E90900188CE6 /* PersistentUtils.swift */; };
+		7E5AF15D21DDA8BE009AD327 /* MasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF15C21DDA8BE009AD327 /* MasterVC.swift */; };
+		7E5AF16121DDAF1B009AD327 /* MasterListTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */; };
 		7E69890221C1DCF400BDBE8C /* LightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */; };
 		7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */; };
 		7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */; };
@@ -21,6 +22,8 @@
 		7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */; };
 		7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */; };
 		7E8D8BE921CB889F0051FF3B /* EditContextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */; };
+		7ED0979421DC76BE00F4A13B /* ContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */; };
+		7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */; };
 		7ED4F65F21D5C84F0055E45A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED4F65E21D5C84E0055E45A /* Assets.xcassets */; };
 		7ED93E0121BA1253008EC776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED93E0021BA1253008EC776 /* AppDelegate.swift */; };
 		7ED93E0321BA1253008EC776 /* ContextLightPatternListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED93E0221BA1253008EC776 /* ContextLightPatternListVC.swift */; };
@@ -59,11 +62,12 @@
 		27057838E3CF1A5FE8BAAC6F /* Pods-AVLightingToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitTests/Pods-AVLightingToolkitTests.debug.xcconfig"; sourceTree = "<group>"; };
-		7E0208B621C3490C00BFE354 /* AddItemFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddItemFooterView.xib; sourceTree = "<group>"; };
-		7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFooterView.swift; sourceTree = "<group>"; };
 		7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLightPatternVC.swift; sourceTree = "<group>"; };
 		7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLightPatternToContextTableViewCell.swift; sourceTree = "<group>"; };
+		7E378BD421DDBA5D00E69B09 /* LightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternVC.swift; sourceTree = "<group>"; };
 		7E4F831021D8E90900188CE6 /* PersistentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentUtils.swift; sourceTree = "<group>"; };
+		7E5AF15C21DDA8BE009AD327 /* MasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterVC.swift; sourceTree = "<group>"; };
+		7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListTableVIewCell.swift; sourceTree = "<group>"; };
 		7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternTableViewCell.swift; sourceTree = "<group>"; };
 		7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextHeaderView.swift; sourceTree = "<group>"; };
 		7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextHeaderView.xib; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 		7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContextVC.swift; sourceTree = "<group>"; };
+		7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextViewModel.swift; sourceTree = "<group>"; };
+		7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternViewModel.swift; sourceTree = "<group>"; };
 		7ED4F65E21D5C84E0055E45A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ED93DFD21BA1253008EC776 /* AVLightingToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVLightingToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED93E0021BA1253008EC776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,23 +156,40 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		7E69890521C20C7A00BDBE8C /* ViewModel */ = {
+		7E5AF15A21DDA4C4009AD327 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */,
+				7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7E5AF15B21DDA4F1009AD327 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */,
+				7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */,
+				7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */,
+				7ED93E0421BA1253008EC776 /* Main.storyboard */,
+				7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */,
+				7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7E69890521C20C7A00BDBE8C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */,
 				7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */,
-				7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */,
-				7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */,
-				7E0208B821C34AA700BFE354 /* AddItemFooterView.swift */,
-				7E0208B621C3490C00BFE354 /* AddItemFooterView.xib */,
-				7ED93E0421BA1253008EC776 /* Main.storyboard */,
-				7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */,
 				7ED93E0221BA1253008EC776 /* ContextLightPatternListVC.swift */,
 				7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */,
 				7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */,
-				7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */,
+				7E5AF15C21DDA8BE009AD327 /* MasterVC.swift */,
+				7E378BD421DDBA5D00E69B09 /* LightPatternVC.swift */,
 			);
-			path = ViewModel;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		7E69890621C20C9300BDBE8C /* DataModel */ = {
@@ -218,8 +241,10 @@
 			children = (
 				7ED93E0021BA1253008EC776 /* AppDelegate.swift */,
 				7E8D8BDF21CB88180051FF3B /* Helper */,
+				7E5AF15B21DDA4F1009AD327 /* View */,
 				7E69890621C20C9300BDBE8C /* DataModel */,
-				7E69890521C20C7A00BDBE8C /* ViewModel */,
+				7E5AF15A21DDA4C4009AD327 /* ViewModel */,
+				7E69890521C20C7A00BDBE8C /* ViewController */,
 				7ED93E0C21BA1256008EC776 /* LaunchScreen.storyboard */,
 				7ED93E0F21BA1256008EC776 /* Info.plist */,
 				7ED93E0721BA1253008EC776 /* AVLightingToolkit.xcdatamodeld */,
@@ -355,7 +380,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ED93E0E21BA1256008EC776 /* LaunchScreen.storyboard in Resources */,
-				7E0208B721C3490C00BFE354 /* AddItemFooterView.xib in Resources */,
 				7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */,
 				7ED93E0621BA1253008EC776 /* Main.storyboard in Resources */,
 				7ED4F65F21D5C84F0055E45A /* Assets.xcassets in Resources */,
@@ -476,17 +500,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7ED0979421DC76BE00F4A13B /* ContextViewModel.swift in Sources */,
 				7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */,
 				7ED93E0321BA1253008EC776 /* ContextLightPatternListVC.swift in Sources */,
 				7ED946CC21CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift in Sources */,
-				7E0208B921C34AA700BFE354 /* AddItemFooterView.swift in Sources */,
+				7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */,
 				7E69890221C1DCF400BDBE8C /* LightPatternTableViewCell.swift in Sources */,
 				7ED946CE21CBA3AC006A66A9 /* Context+CoreDataProperties.swift in Sources */,
 				7ED946CD21CBA3AC006A66A9 /* Context+CoreDataClass.swift in Sources */,
 				7ED93E0921BA1253008EC776 /* AVLightingToolkit.xcdatamodeld in Sources */,
 				7EF0902C21D642F4002D7DBB /* LEDController.swift in Sources */,
+				7E5AF16121DDAF1B009AD327 /* MasterListTableVIewCell.swift in Sources */,
 				7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */,
 				7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */,
+				7E378BD521DDBA5D00E69B09 /* LightPatternVC.swift in Sources */,
 				7ED946CB21CBA3AC006A66A9 /* LightPattern+CoreDataClass.swift in Sources */,
 				7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */,
 				7E73D32C21CF6100003A4C22 /* CoreDataStack.swift in Sources */,
@@ -494,6 +521,7 @@
 				7ED93E0121BA1253008EC776 /* AppDelegate.swift in Sources */,
 				7E8D8BE921CB889F0051FF3B /* EditContextVC.swift in Sources */,
 				7E1C3D0921D7457800278D29 /* AddLightPatternToContextTableViewCell.swift in Sources */,
+				7E5AF15D21DDA8BE009AD327 /* MasterVC.swift in Sources */,
 				7E8D8BE221CB88180051FF3B /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

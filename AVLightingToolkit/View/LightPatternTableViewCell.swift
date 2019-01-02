@@ -13,14 +13,22 @@ class LightPatternTableViewCell: UITableViewCell {
     
     var delegate: CustomTableViewCellDelegate?
     
-    func initCellItem() {
-        radioButton.addTarget(self, action: #selector(self.radioButtonTapped), for: .touchUpInside)
-                
+    func initCellItem(for title: String, imageFileName: String?, selected: Bool) {
+        itemLabel.text = title
+        
+        if let filename = imageFileName, let image = ImageUtils.getImageFromDocumentPath(for: filename) {
+            itemImage.image = image
+        } else {
+            itemImage.image = UIImage(named: "brightness_pattern")
+        }
+        
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.itemImageTapped))
         singleTap.numberOfTapsRequired = 1;
         itemImage.isUserInteractionEnabled = true
         itemImage?.addGestureRecognizer(singleTap)
         
+        radioButton.addTarget(self, action: #selector(self.radioButtonTapped), for: .touchUpInside)
+        radioButton.isChecked = selected
     }
     
     @objc func radioButtonTapped(_ radioButton: UIButton) {

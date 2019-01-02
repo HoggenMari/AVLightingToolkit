@@ -18,7 +18,7 @@ extension LightPattern {
     }
 
     @NSManaged public var imageFilename: String?
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
     @NSManaged public var context: Context?
     
     public func isEqualTo(_ object: Any?) -> Bool {

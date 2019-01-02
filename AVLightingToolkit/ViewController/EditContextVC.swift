@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import Photos
 import CoreData
+import Photos
 import SwiftIcons
 
-enum EditContextTitle {
-    case newContext
-    case editContext
+enum EditMode {
+    case new
+    case edit
     
     var description : String {
         switch self {
         // Use Internationalization, as appropriate.
-        case .newContext: return "New Context"
-        case .editContext: return "Edit Context"
+        case .new: return "New Context"
+        case .edit: return "Edit Context"
         }
     }
     
@@ -32,8 +32,6 @@ protocol ContextEntryDelegate {
 
 class EditContextVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    /*let overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9,
-                                      height: UIScreen.main.bounds.height * 0.6)*/
     let heightForRow: CGFloat = 30
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -44,19 +42,22 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     var filename: String?
     
-    // MARK: Properties
-    var contextEntry: Context? {
+    var contextViewModel: ContextViewModel? {
         didSet {
             configureView()
+            context = contextViewModel?.currentContext?.managedObjectContext
         }
     }
     
     var context: NSManagedObjectContext!
+    
+    var lightpatternViewModel: LightPatternViewModel?
+    
     var delegate: ContextEntryDelegate?
-    var controllerTitle: EditContextTitle = EditContextTitle.newContext {
-        
+    
+    var editMode = EditMode.new {
         didSet {
-            titleLabel.text = controllerTitle.description
+            titleLabel.text = editMode.description
         }
     }
     
@@ -78,7 +79,7 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     }
     
     func configureView() {
-        guard let entry = contextEntry else { return }
+        guard let entry = contextViewModel?.currentContext else { return }
 
         name.text = entry.name
         guard let filename = entry.imageFilename else {
@@ -89,16 +90,15 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     }
     
     func updateContextEntry() {
-        guard let entry = contextEntry else { return }
+        guard let entry = contextViewModel?.currentContext else { return }
         
-        entry.name = name.text
+        entry.name = name.text ?? ""
         entry.imageFilename = filename
-        
     }
 
     @IBAction func addContext(_ sender: Any) {
         updateContextEntry()
-        if let titleName = contextEntry?.name, !titleName.isEmpty {
+        if let titleName = contextViewModel?.currentContext?.name, !titleName.isEmpty {
             delegate?.didFinish(viewController: self, didSave: true)
             dismissOverlay()
         } else {
@@ -109,9 +109,11 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     }
 
     @IBAction func close(_ sender: Any) {
+        if editMode == .edit {
+            contextViewModel?.currentContext = nil
+        }
         delegate?.didFinish(viewController: self, didSave: false)
         dismissOverlay()
-
     }
     
     @IBAction func selectBackgroundImage(_ sender: Any) {
@@ -148,7 +150,7 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
 extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PersistentUtils.sharedInstance.lightPatternFetchedResultsController().fetchedObjects?.count ?? 0
+        return lightpatternViewModel?.numberOfLightPatterns ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -156,13 +158,14 @@ extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
             tableView.dequeueReusableCell(withIdentifier: "lightpattern") as! AddLightPatternToContextTableViewCell
         cell.initCell(at: indexPath.row)
         
-        let pattern = PersistentUtils.sharedInstance.lightPatternFetchedResultsController().object(at: indexPath)
-        cell.itemLabel?.text = pattern.name
+        
+        let pattern = lightpatternViewModel?.lightPattern(at: indexPath)
+        cell.itemLabel?.text = pattern?.name
         cell.delegate = self
         
-        if let patternLength = contextEntry?.lightpatterns?.count, patternLength > 0 {
+        if let patternLength = contextViewModel?.currentContext?.lightpatterns?.count, patternLength > 0 {
             for n in 0...patternLength-1 {
-                let p = contextEntry?.lightpatterns?.allObjects[n] as! LightPattern
+                let p = contextViewModel?.currentContext?.lightpatterns?.allObjects[n] as! LightPattern
                 if p.isEqualTo(pattern) {
                     cell.button?.isChecked = true
                     return cell
@@ -183,18 +186,18 @@ extension EditContextVC: LightPatternSelectedDelegate {
     func didToggleLightPatternCheckbox(patternWith index: Int, checked: Bool) {
         print(String(index)+""+String(checked))
         
-        guard let pattern = PersistentUtils.sharedInstance.lightPatternFetchedResultsController().fetchedObjects?[index] else {
+        guard let pattern = lightpatternViewModel?.lightPattern(for: index) else {
             return
         }
         
         if checked {
-            contextEntry?.addToLightpatterns(pattern)
+            contextViewModel?.currentContext?.addToLightpatterns(pattern)
         } else {
-            if let patternLength = contextEntry?.lightpatterns?.count, patternLength > 0 {
+            if let patternLength = contextViewModel?.currentContext?.lightpatterns?.count, patternLength > 0 {
                 for n in 0...patternLength-1 {
-                    let p = contextEntry?.lightpatterns?.allObjects[n] as! LightPattern
+                    let p = contextViewModel?.currentContext?.lightpatterns?.allObjects[n] as! LightPattern
                     if p.isEqualTo(pattern) {
-                        contextEntry?.removeFromLightpatterns(p)
+                        contextViewModel?.currentContext?.removeFromLightpatterns(p)
                         return
                     }
                 }

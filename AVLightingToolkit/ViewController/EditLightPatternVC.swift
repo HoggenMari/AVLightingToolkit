@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import CoreData
 import UIKit
+import CoreData
 
 enum EditLightPatternTitle {
     case newLightPattern
@@ -38,20 +38,22 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     
     var filename: String?
     
-    var context: NSManagedObjectContext!
     var delegate: LightPatternEntryDelegate?
+    
     var controllerTitle: EditLightPatternTitle = EditLightPatternTitle.newLightPattern {
         didSet {
             titleLabel.text = controllerTitle.description
         }
     }
     
-    // MARK: Properties
-    var lightPatternEntry: LightPattern? {
+    var lightpatternViewModel: LightPatternViewModel? {
         didSet {
             configureView()
+            context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
         }
     }
+    
+    var context: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +69,7 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     }
 
     func configureView() {
-        guard let entry = lightPatternEntry else { return }
+        guard let entry = lightpatternViewModel?.currentLightPattern else { return }
         
         name.text = entry.name
         guard let filename = entry.imageFilename else {
@@ -78,16 +80,16 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     }
     
     func updateLightPatternEntry() {
-        guard let entry = lightPatternEntry else { return }
+        guard let entry = lightpatternViewModel?.currentLightPattern else { return }
         
-        entry.name = name.text
+        entry.name = name.text ?? ""
         entry.imageFilename = filename
         
     }
     
     @IBAction func addContext(_ sender: Any) {
         updateLightPatternEntry()
-        if let titleName = lightPatternEntry?.name, !titleName.isEmpty {
+        if let titleName = lightpatternViewModel?.currentLightPattern?.name, !titleName.isEmpty {
             delegate?.didFinish(viewController: self, didSave: true)
             dismissOverlay()
         } else {
