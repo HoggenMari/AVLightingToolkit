@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		0A978121FC0E515ED3BFCB34 /* Pods_AVLightingToolkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */; };
 		7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */; };
-		7E1C3D0921D7457800278D29 /* AddLightPatternToContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */; };
+		7E2AD8C221DF835C006469D5 /* LightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C121DF835C006469D5 /* LightPatternTableViewCell.swift */; };
+		7E2AD8C421DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C321DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift */; };
+		7E2AD8C621DF83B3006469D5 /* AllLightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C521DF83B3006469D5 /* AllLightPatternTableViewCell.swift */; };
+		7E2AD8C821E0449A006469D5 /* EditLightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C721E0449A006469D5 /* EditLightPatternTableViewCell.swift */; };
 		7E378BD521DDBA5D00E69B09 /* LightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378BD421DDBA5D00E69B09 /* LightPatternVC.swift */; };
 		7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4F831021D8E90900188CE6 /* PersistentUtils.swift */; };
 		7E5AF15D21DDA8BE009AD327 /* MasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF15C21DDA8BE009AD327 /* MasterVC.swift */; };
 		7E5AF16121DDAF1B009AD327 /* MasterListTableVIewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */; };
-		7E69890221C1DCF400BDBE8C /* LightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */; };
 		7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */; };
 		7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */; };
 		7E73D32C21CF6100003A4C22 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E73D32B21CF6100003A4C22 /* CoreDataStack.swift */; };
@@ -63,12 +65,14 @@
 		2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.debug.xcconfig"; sourceTree = "<group>"; };
 		6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitTests/Pods-AVLightingToolkitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLightPatternVC.swift; sourceTree = "<group>"; };
-		7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLightPatternToContextTableViewCell.swift; sourceTree = "<group>"; };
+		7E2AD8C121DF835C006469D5 /* LightPatternTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPatternTableViewCell.swift; sourceTree = "<group>"; };
+		7E2AD8C321DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLightPatternToContextTableViewCell.swift; sourceTree = "<group>"; };
+		7E2AD8C521DF83B3006469D5 /* AllLightPatternTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllLightPatternTableViewCell.swift; sourceTree = "<group>"; };
+		7E2AD8C721E0449A006469D5 /* EditLightPatternTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLightPatternTableViewCell.swift; sourceTree = "<group>"; };
 		7E378BD421DDBA5D00E69B09 /* LightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternVC.swift; sourceTree = "<group>"; };
 		7E4F831021D8E90900188CE6 /* PersistentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentUtils.swift; sourceTree = "<group>"; };
 		7E5AF15C21DDA8BE009AD327 /* MasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterVC.swift; sourceTree = "<group>"; };
 		7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterListTableVIewCell.swift; sourceTree = "<group>"; };
-		7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternTableViewCell.swift; sourceTree = "<group>"; };
 		7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextHeaderView.swift; sourceTree = "<group>"; };
 		7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextHeaderView.xib; sourceTree = "<group>"; };
 		7E73D32B21CF6100003A4C22 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -168,12 +172,14 @@
 		7E5AF15B21DDA4F1009AD327 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7E69890121C1DCF400BDBE8C /* LightPatternTableViewCell.swift */,
+				7E2AD8C521DF83B3006469D5 /* AllLightPatternTableViewCell.swift */,
+				7E2AD8C321DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift */,
+				7E2AD8C121DF835C006469D5 /* LightPatternTableViewCell.swift */,
 				7E5AF16021DDAF1B009AD327 /* MasterListTableVIewCell.swift */,
 				7E69890D21C21E7B00BDBE8C /* ContextHeaderView.xib */,
 				7ED93E0421BA1253008EC776 /* Main.storyboard */,
 				7E69890B21C21E1F00BDBE8C /* ContextHeaderView.swift */,
-				7E1C3D0821D7457800278D29 /* AddLightPatternToContextTableViewCell.swift */,
+				7E2AD8C721E0449A006469D5 /* EditLightPatternTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,9 +509,10 @@
 				7ED0979421DC76BE00F4A13B /* ContextViewModel.swift in Sources */,
 				7E4F831121D8E90900188CE6 /* PersistentUtils.swift in Sources */,
 				7ED93E0321BA1253008EC776 /* ContextLightPatternListVC.swift in Sources */,
+				7E2AD8C621DF83B3006469D5 /* AllLightPatternTableViewCell.swift in Sources */,
+				7E2AD8C221DF835C006469D5 /* LightPatternTableViewCell.swift in Sources */,
 				7ED946CC21CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift in Sources */,
 				7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */,
-				7E69890221C1DCF400BDBE8C /* LightPatternTableViewCell.swift in Sources */,
 				7ED946CE21CBA3AC006A66A9 /* Context+CoreDataProperties.swift in Sources */,
 				7ED946CD21CBA3AC006A66A9 /* Context+CoreDataClass.swift in Sources */,
 				7ED93E0921BA1253008EC776 /* AVLightingToolkit.xcdatamodeld in Sources */,
@@ -517,11 +524,12 @@
 				7ED946CB21CBA3AC006A66A9 /* LightPattern+CoreDataClass.swift in Sources */,
 				7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */,
 				7E73D32C21CF6100003A4C22 /* CoreDataStack.swift in Sources */,
+				7E2AD8C421DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift in Sources */,
 				7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */,
 				7ED93E0121BA1253008EC776 /* AppDelegate.swift in Sources */,
 				7E8D8BE921CB889F0051FF3B /* EditContextVC.swift in Sources */,
-				7E1C3D0921D7457800278D29 /* AddLightPatternToContextTableViewCell.swift in Sources */,
 				7E5AF15D21DDA8BE009AD327 /* MasterVC.swift in Sources */,
+				7E2AD8C821E0449A006469D5 /* EditLightPatternTableViewCell.swift in Sources */,
 				7E8D8BE221CB88180051FF3B /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

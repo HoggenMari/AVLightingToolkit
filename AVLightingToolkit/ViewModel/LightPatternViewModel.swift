@@ -13,6 +13,7 @@ class LightPatternViewModel {
     
     var currentLightPattern: LightPattern?
     var fetchedResultController: NSFetchedResultsController<LightPattern>?
+    var childContext: NSManagedObjectContext!
     
     init() {
         fetchedResultController = NSFetchedResultsController(fetchRequest: lightpatternFetchRequest(),
@@ -41,6 +42,13 @@ class LightPatternViewModel {
     
     func createNewLightPattern() -> LightPattern? {
         currentLightPattern = LightPattern(context: PersistentUtils.sharedInstance.coreDataStack.mainContext)
+        return currentLightPattern
+    }
+    
+    func cloneLightPattern(_ id: NSManagedObjectID) -> LightPattern? {
+        childContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        childContext.parent = PersistentUtils.sharedInstance.coreDataStack.mainContext
+        currentLightPattern = childContext.object(with: id) as? LightPattern
         return currentLightPattern
     }
 
@@ -78,5 +86,12 @@ class LightPatternViewModel {
             PersistentUtils.sharedInstance.coreDataStack.saveContext()
         }
         return
+    }
+    
+    func deleteLightPattern(at section: Int) {
+        let sections = fetchedResultController?.fetchedObjects?[section]
+        PersistentUtils.sharedInstance.coreDataStack.mainContext.delete(sections!)
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        
     }
 }

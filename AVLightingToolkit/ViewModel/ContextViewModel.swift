@@ -14,8 +14,6 @@ class ContextViewModel {
     var currentContext: Context?
     var childContext: NSManagedObjectContext!
     var context: NSManagedObjectContext!
-    //var ctx: NSManagedObjectContext!
-
     
     var fetchedResultController: NSFetchedResultsController<Context>?
     
@@ -47,7 +45,6 @@ class ContextViewModel {
     func createNewContext() -> Context? {
         currentContext = Context(context: PersistentUtils.sharedInstance.coreDataStack.mainContext)
         currentContext?.position = Int16(numberOfContexts)
-        //ctx = currentContext?.managedObjectContext
         return currentContext
     }
     
@@ -76,8 +73,8 @@ class ContextViewModel {
                 } catch let error as NSError {
                     fatalError("Error: \(error.localizedDescription)")
                 }
+            PersistentUtils.sharedInstance.coreDataStack.saveContext()
         }
-        PersistentUtils.sharedInstance.coreDataStack.saveContext()
     }
     
     func deleteContext(at section: Int) {

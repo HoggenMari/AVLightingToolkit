@@ -20,6 +20,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                     <gestureRecognizers/>
                 </imageView>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-lu-0J1">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ4-1J-cPW">
                     <rect key="frame" x="10" y="27" width="64" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -40,7 +44,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="ecH-lu-0J1" firstAttribute="top" secondItem="0rl-hZ-5jo" secondAttribute="top" id="AC0-9f-EqP"/>
                 <constraint firstItem="MZ4-1J-cPW" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="C3j-gs-wOX"/>
+                <constraint firstItem="ecH-lu-0J1" firstAttribute="trailing" secondItem="0rl-hZ-5jo" secondAttribute="trailing" id="D5s-zN-nDg"/>
+                <constraint firstItem="ecH-lu-0J1" firstAttribute="leading" secondItem="0rl-hZ-5jo" secondAttribute="leading" id="DBp-pS-tJB"/>
+                <constraint firstItem="ecH-lu-0J1" firstAttribute="bottom" secondItem="0rl-hZ-5jo" secondAttribute="bottom" id="GQr-WZ-LWC"/>
                 <constraint firstItem="MZ4-1J-cPW" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ITH-Gj-Oc6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="0rl-hZ-5jo" secondAttribute="bottom" id="Pvh-e2-TAt"/>
                 <constraint firstItem="0rl-hZ-5jo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SNg-BR-QeW"/>

@@ -6,6 +6,13 @@
 //  Copyright © 2018 Marius Hoggenmüller. All rights reserved.
 //
 
+/*var loop = function(numLEDs) { var leds = [];
+    for (i=0; i<numLEDs; i++) {
+        leds.push(255);
+    }
+    return leds;
+}*/
+
 import Foundation
 import SwiftSocket
 import JavaScriptCore

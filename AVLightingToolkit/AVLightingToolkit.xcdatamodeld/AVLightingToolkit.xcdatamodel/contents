@@ -8,12 +8,13 @@
         <relationship name="selected" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LightPattern" syncable="YES"/>
     </entity>
     <entity name="LightPattern" representedClassName="LightPattern" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="context" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Context" inverseName="lightpatterns" inverseEntity="Context" syncable="YES"/>
     </entity>
     <elements>
         <element name="Context" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="LightPattern" positionX="215.71875" positionY="120.66796875" width="128" height="90"/>
+        <element name="LightPattern" positionX="215.71875" positionY="120.66796875" width="128" height="105"/>
     </elements>
 </model>

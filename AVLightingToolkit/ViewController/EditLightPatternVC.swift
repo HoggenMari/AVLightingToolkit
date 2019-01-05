@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-enum EditLightPatternTitle {
+/*enum EditLightPatternTitle {
     case newLightPattern
     case editLightPattern
     
@@ -21,8 +21,7 @@ enum EditLightPatternTitle {
         case .editLightPattern: return "Edit Light Pattern"
         }
     }
-    
-}
+}*/
 
 // MARK: JournalEntryDelegate
 protocol LightPatternEntryDelegate {
@@ -35,14 +34,15 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var previewImageButton: UIButton!
+    @IBOutlet weak var codeTextView: UITextView!
     
     var filename: String?
     
     var delegate: LightPatternEntryDelegate?
     
-    var controllerTitle: EditLightPatternTitle = EditLightPatternTitle.newLightPattern {
+    var editMode: EditMode = EditMode.new {
         didSet {
-            titleLabel.text = controllerTitle.description
+            titleLabel.text = editMode.descriptionForLightPattern
         }
     }
     
@@ -72,11 +72,14 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         guard let entry = lightpatternViewModel?.currentLightPattern else { return }
         
         name.text = entry.name
-        guard let filename = entry.imageFilename else {
-            return
+        if let filename = entry.imageFilename  {
+            self.filename = filename
+            backgroundImage.image = ImageUtils.getImageFromDocumentPath(for: filename)
         }
-        self.filename = filename
-        backgroundImage.image = ImageUtils.getImageFromDocumentPath(for: filename)
+        if let code = entry.code {
+            codeTextView.text = code
+        }
+        
     }
     
     func updateLightPatternEntry() {
@@ -84,6 +87,7 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         
         entry.name = name.text ?? ""
         entry.imageFilename = filename
+        entry.code = codeTextView.text
         
     }
     

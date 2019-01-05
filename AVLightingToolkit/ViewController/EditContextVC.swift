@@ -15,11 +15,19 @@ enum EditMode {
     case new
     case edit
     
-    var description : String {
+    var descriptionForContext : String {
         switch self {
         // Use Internationalization, as appropriate.
         case .new: return "New Context"
         case .edit: return "Edit Context"
+        }
+    }
+    
+    var descriptionForLightPattern : String {
+        switch self {
+        // Use Internationalization, as appropriate.
+        case .new: return "New LightPattern"
+        case .edit: return "Edit LightPattern"
         }
     }
     
@@ -57,7 +65,7 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     var editMode = EditMode.new {
         didSet {
-            titleLabel.text = editMode.description
+            titleLabel.text = editMode.descriptionForContext
         }
     }
     

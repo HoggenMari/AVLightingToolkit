@@ -103,7 +103,7 @@ extension ContextLightPatternListVC: OverlayHost {
         let addLightPatternViewController = showOverlay(type: EditLightPatternVC.self, fromStoryboardWithName: "Main")
         _ = lightpatternViewModel.createNewLightPattern()
         addLightPatternViewController?.lightpatternViewModel = lightpatternViewModel
-        addLightPatternViewController?.controllerTitle = EditLightPatternTitle.newLightPattern
+        addLightPatternViewController?.editMode = EditMode.new
         addLightPatternViewController?.delegate = self
     }
     
