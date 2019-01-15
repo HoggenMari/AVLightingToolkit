@@ -20,9 +20,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                     <gestureRecognizers/>
                 </imageView>
-                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-lu-0J1">
+                <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-lu-0J1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ4-1J-cPW">
                     <rect key="frame" x="10" y="27" width="64" height="30"/>
@@ -63,6 +62,7 @@
                 <outlet property="contextImage" destination="0rl-hZ-5jo" id="QM9-ol-ypO"/>
                 <outlet property="contextTitle" destination="MZ4-1J-cPW" id="4DO-J8-2rO"/>
                 <outlet property="deleteButton" destination="OuK-YJ-x1W" id="RRg-QO-Nba"/>
+                <outlet property="gradientView" destination="ecH-lu-0J1" id="5Ra-W0-0LX"/>
             </connections>
             <point key="canvasLocation" x="152.80000000000001" y="362.51874062968517"/>
         </view>

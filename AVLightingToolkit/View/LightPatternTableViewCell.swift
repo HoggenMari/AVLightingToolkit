@@ -1,7 +1,9 @@
 import UIKit
+import EFColorPicker
 
 protocol CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath)
+    func colorTapped(_ sender: UIButton, indexPath: IndexPath, colorIndex: Int)
 }
 
 class LightPatternTableViewCell: UITableViewCell {
@@ -9,17 +11,33 @@ class LightPatternTableViewCell: UITableViewCell {
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var radioButton: PlayButton!
     @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var itemStackView: UIStackView!
+    @IBOutlet weak var colorView: UIView!
+    
+    //@IBOutlet weak var itemStackView: UIStackView!
+    //@IBOutlet weak var color1: UIButton!
+    //@IBOutlet weak var color2: UIButton!
+    //@IBOutlet weak var color3: UIButton!
     
     var delegate: CustomTableViewCellDelegate?
     
-    func initCellItem(for title: String, imageFileName: String?, selected: Bool) {
+    func initCellItem(for title: String, imageFileName: String?, color: [Data?], selected: Bool) {
         itemLabel.text = title
         
         if let filename = imageFileName, let image = ImageUtils.getImageFromDocumentPath(for: filename) {
             itemImage.image = image
         } else {
             itemImage.image = UIImage(named: "brightness_pattern")
+        }
+        
+        if let customView = Bundle.main.loadNibNamed("ColorPaletteView", owner: self, options: nil)?.first as? ColorPaletteView {
+            colorView.addSubview(customView)
+            
+            customView.translatesAutoresizingMaskIntoConstraints = false
+            colorView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":customView]))
+            colorView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":customView]))
+            
+            customView.initView(with: color)
+            customView.delegate = self
         }
         
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.itemImageTapped))
@@ -44,6 +62,15 @@ class LightPatternTableViewCell: UITableViewCell {
         let tableView = self.superview as! UITableView
         let tappedCellIndexPath = tableView.indexPath(for: self)!
         delegate?.didToggleRadioButton(tappedCellIndexPath)
+    }
+    
+}
+
+extension LightPatternTableViewCell: ColorPaletteDelegate {
+    func didTappedColor(_ sender: UIButton, colorIndex: Int) {
+        let tableView = self.superview as! UITableView
+        let tappedCellIndexPath = tableView.indexPath(for: self)!
+        delegate?.colorTapped(sender, indexPath: tappedCellIndexPath, colorIndex:  colorIndex)
     }
     
 }

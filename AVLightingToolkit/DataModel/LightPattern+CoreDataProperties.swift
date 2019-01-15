@@ -21,6 +21,10 @@ extension LightPattern {
     @NSManaged public var name: String
     @NSManaged public var code: String?
     @NSManaged public var context: Context?
+    @NSManaged public var color1: Data?
+    @NSManaged public var color2: Data?
+    @NSManaged public var color3: Data?
+
     
     public func isEqualTo(_ object: Any?) -> Bool {
         return

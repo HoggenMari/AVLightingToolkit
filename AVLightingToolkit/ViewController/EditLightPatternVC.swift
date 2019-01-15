@@ -9,19 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-
-/*enum EditLightPatternTitle {
-    case newLightPattern
-    case editLightPattern
-    
-    var description : String {
-        switch self {
-        // Use Internationalization, as appropriate.
-        case .newLightPattern: return "New Light Pattern"
-        case .editLightPattern: return "Edit Light Pattern"
-        }
-    }
-}*/
+import EFColorPicker
 
 // MARK: JournalEntryDelegate
 protocol LightPatternEntryDelegate {
@@ -35,6 +23,12 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var previewImageButton: UIButton!
     @IBOutlet weak var codeTextView: UITextView!
+    
+    @IBOutlet weak var colorView: UIView!
+    
+    var customColorView: ColorPaletteEditView!
+    var selectedColor: [Data?] = [ nil, nil, nil ]
+    var selectedColorIndex: Int!
     
     var filename: String?
     
@@ -60,6 +54,18 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         previewImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
         configureView()
+        
+        if let customView = Bundle.main.loadNibNamed("ColorPaletteEditView", owner: self, options: nil)?.first as? ColorPaletteEditView {
+            customColorView = customView
+            colorView.addSubview(customColorView)
+            
+            customColorView.translatesAutoresizingMaskIntoConstraints = false
+            colorView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":customColorView]))
+            colorView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":customColorView]))
+            
+            customColorView.delegate = self
+        }
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -79,6 +85,11 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         if let code = entry.code {
             codeTextView.text = code
         }
+        selectedColor[0] = entry.color1
+        selectedColor[1] = entry.color2
+        selectedColor[2] = entry.color3
+
+        customColorView.initView(with: selectedColor)
         
     }
     
@@ -88,6 +99,9 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         entry.name = name.text ?? ""
         entry.imageFilename = filename
         entry.code = codeTextView.text
+        entry.color1 = selectedColor[0]
+        entry.color2 = selectedColor[1]
+        entry.color3 = selectedColor[2]
         
     }
     
@@ -104,6 +118,9 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     }
     
     @IBAction func close(_ sender: Any) {
+        if editMode == .edit {
+            lightpatternViewModel?.currentLightPattern = nil
+        }
         delegate?.didFinish(viewController: self, didSave: false)
         dismissOverlay()
         
@@ -137,5 +154,62 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
             filename = ImageUtils.getImageFilename(for: info)
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension EditLightPatternVC: ColorPaletteDelegate {
+    func didTappedColor(_ sender: UIButton, colorIndex: Int) {
+        colorPicker(sender, colorIndex: colorIndex)
+    }
+}
+
+extension EditLightPatternVC: UIPopoverPresentationControllerDelegate, EFColorSelectionViewControllerDelegate {
+    
+    func colorViewController(_ colorViewCntroller: EFColorSelectionViewController, didChangeColor color: UIColor) {
+        print("didchangecolor")
+        selectedColor[selectedColorIndex] = color.encode()
+        
+        customColorView.setColor(for: selectedColorIndex, color: color)
+        
+    }
+    
+    func colorPicker(_ sender: UIButton, colorIndex: Int) {
+        selectedColorIndex = colorIndex
+        let colorSelectionController = EFColorSelectionViewController()
+        let navCtrl = UINavigationController(rootViewController: colorSelectionController)
+        navCtrl.navigationBar.backgroundColor = UIColor.white
+        navCtrl.navigationBar.isTranslucent = false
+        navCtrl.modalPresentationStyle = UIModalPresentationStyle.popover
+        navCtrl.popoverPresentationController?.delegate = self
+        navCtrl.popoverPresentationController?.sourceView = sender
+        navCtrl.popoverPresentationController?.sourceRect = sender.bounds
+        navCtrl.preferredContentSize = colorSelectionController.view.systemLayoutSizeFitting(
+            UIView.layoutFittingCompressedSize
+        )
+        
+        colorSelectionController.delegate = self
+        colorSelectionController.color = self.view.backgroundColor ?? UIColor.white
+        
+        if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
+            let doneBtn: UIBarButtonItem = UIBarButtonItem(
+                title: NSLocalizedString("Done", comment: ""),
+                style: UIBarButtonItem.Style.done,
+                target: self,
+                action: #selector(ef_dismissViewController(sender:))
+            )
+            colorSelectionController.navigationItem.rightBarButtonItem = doneBtn
+        }
+        self.present(navCtrl, animated: true, completion: nil)
+    }
+    
+    // MARK:- Private
+    @objc func ef_dismissViewController(sender: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            [weak self] in
+            if let _ = self {
+                // TODO: You can do something here when EFColorPicker close.
+                print("EFColorPicker closed.")
+            }
+        }
     }
 }

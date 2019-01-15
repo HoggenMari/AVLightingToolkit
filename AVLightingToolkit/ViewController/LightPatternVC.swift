@@ -58,7 +58,11 @@ class LightPatternVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @objc func buttonAction(sender: UIBarButtonItem) {
-        print("test")
+        let addLightPatternViewController = showOverlay(type: EditLightPatternVC.self, fromStoryboardWithName: "Main")
+        _ = viewModel?.createNewLightPattern()
+        addLightPatternViewController?.lightpatternViewModel = viewModel
+        addLightPatternViewController?.editMode = EditMode.new
+        addLightPatternViewController?.delegate = self
     }
     
     
@@ -85,6 +89,8 @@ extension LightPatternVC: LightPatternEntryDelegate, EditLightPatternDelegate, O
             viewModel?.saveCurrentLightPattern()
         } else {
             viewModel?.clearCurrentLightPattern()
+            table.reloadData()
+
         }
         dismiss(animated: true)
     }
@@ -93,7 +99,9 @@ extension LightPatternVC: LightPatternEntryDelegate, EditLightPatternDelegate, O
 extension LightPatternVC: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        table.reloadData()
+        if table != nil {
+            table.reloadData()
+        }
         print("changes")
     }
     
