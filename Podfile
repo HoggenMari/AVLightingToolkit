@@ -9,6 +9,7 @@ target 'AVLightingToolkit' do
   pod 'SwiftSocket'
   pod 'SwiftIcons', '~> 2.3.2'
   pod 'EFColorPicker'
+  pod 'Highlightr'
 
   target 'AVLightingToolkitTests' do
     inherit! :search_paths

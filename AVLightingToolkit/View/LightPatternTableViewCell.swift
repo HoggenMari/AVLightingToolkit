@@ -13,11 +13,7 @@ class LightPatternTableViewCell: UITableViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var colorView: UIView!
     
-    //@IBOutlet weak var itemStackView: UIStackView!
-    //@IBOutlet weak var color1: UIButton!
-    //@IBOutlet weak var color2: UIButton!
-    //@IBOutlet weak var color3: UIButton!
-    
+    var cView: ColorPaletteView!
     var delegate: CustomTableViewCellDelegate?
     
     func initCellItem(for title: String, imageFileName: String?, color: [Data?], selected: Bool) {
@@ -30,7 +26,11 @@ class LightPatternTableViewCell: UITableViewCell {
         }
         
         if let customView = Bundle.main.loadNibNamed("ColorPaletteView", owner: self, options: nil)?.first as? ColorPaletteView {
-            colorView.addSubview(customView)
+            if cView != nil {
+                cView.removeFromSuperview()
+            }
+            cView = customView
+            colorView.addSubview(cView)
             
             customView.translatesAutoresizingMaskIntoConstraints = false
             colorView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: ["view":customView]))
@@ -39,7 +39,7 @@ class LightPatternTableViewCell: UITableViewCell {
             customView.initView(with: color)
             customView.delegate = self
         }
-        
+                
         let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.itemImageTapped))
         singleTap.numberOfTapsRequired = 1;
         itemImage.isUserInteractionEnabled = true

@@ -26,6 +26,8 @@ class ColorPaletteEditView: UIStackView  {
     func initView(with color: [Data?]) {
         
         if color.count >= 1, let c1 = color[0]  {
+            color1.alpha = 1
+            color1text.alpha = 1
             color1.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: UIColor.color(withData: c1), backgroundColor: UIColor.clear, forState: .normal)
         } else {
             color1.alpha = 0.3
@@ -34,6 +36,8 @@ class ColorPaletteEditView: UIStackView  {
         }
          
          if color.count >= 2, let c2 = color[1] {
+            color2.alpha = 1
+            color2text.alpha = 1
             color2.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: UIColor.color(withData: c2), backgroundColor: UIColor.clear, forState: .normal)
          } else {
             color2.alpha = 0.3
@@ -42,6 +46,8 @@ class ColorPaletteEditView: UIStackView  {
         }
          
          if color.count >= 3, let c3 = color[2] {
+            color3.alpha = 1
+            color3text.alpha = 1
             color3.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: UIColor.color(withData: c3), backgroundColor: UIColor.clear, forState: .normal)
          } else {
             color3.alpha = 0.3
@@ -71,5 +77,11 @@ class ColorPaletteEditView: UIStackView  {
             color3.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: color, backgroundColor: UIColor.clear, forState: .normal)
         }
     }
+    
+    /*func setColors(color: [UIColor]) {
+        color1.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: color[0], backgroundColor: UIColor.clear, forState: .normal)
+        color2.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: color[1], backgroundColor: UIColor.clear, forState: .normal)
+        color2.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: color[2], backgroundColor: UIColor.clear, forState: .normal)
+    }*/
     
 }

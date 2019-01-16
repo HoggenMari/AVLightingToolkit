@@ -69,9 +69,9 @@ extension OverlayViewController where Self: UIViewController {
             var x: CGFloat = 0, y: CGFloat = 0
             var overlaySize = CGSize.zero
             if UIDevice.current.orientation.isLandscape {
-                overlaySize = CGSize(width: parentBounds.width*0.9, height: parentBounds.height*0.5)
+                overlaySize = CGSize(width: parentBounds.width*0.9, height: parentBounds.height*0.7)
                 x = (parentBounds.width - overlaySize.width) * 0.5
-                y = (parentBounds.height - overlaySize.height) * 0.2
+                y = (parentBounds.height - overlaySize.height) * 0.3
             } else {
                 overlaySize = CGSize(width: parentBounds.width*0.9, height: parentBounds.height*0.6)
                 x = (parentBounds.width - overlaySize.width) * 0.5

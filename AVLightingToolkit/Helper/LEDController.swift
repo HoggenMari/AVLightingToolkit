@@ -136,7 +136,10 @@ class LEDController {
 
         let ledScript = "var mapToNative = function(leds,num) { var leds = new Array(num); return test.map(function (led, index) { return LED.setAllWithRedGreenBlue(interpolate(color1.getRed(), color2.getRed(), index, num),interpolate(color1.getGreen(), color2.getGreen(), index, num), interpolate(color1.getBlue(), color2.getBlue(), index, num));})}; function interpolate(start, end, step, last) { return (end - start ) * step / last + start; }"
 
-        context?.evaluateScript(ledScript)
+        guard let c = code else {
+            return
+        }
+        context?.evaluateScript(c)
         
         let mapFunction = context?.objectForKeyedSubscript("mapToNative")
         let leds = mapFunction?.call(withArguments: [10,10]).toArray() as? [LED]

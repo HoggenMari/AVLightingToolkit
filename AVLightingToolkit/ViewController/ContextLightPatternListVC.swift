@@ -117,6 +117,7 @@ extension ContextLightPatternListVC: OverlayHost {
 extension ContextLightPatternListVC: CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath) {
         contextViewModel.selectLightPattern(indexPath: indexPath)
+        LEDController.sharedInstance.play(contextViewModel.lightPatternForContext(indexPath: indexPath)?.code ?? "")
     }
     
     func colorTapped(_ sender: UIButton, indexPath: IndexPath, colorIndex: Int) {
@@ -170,7 +171,7 @@ extension ContextLightPatternListVC: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         lightPatternTableView.reloadData()
-        print("changes")
+        //print("changes")
     }
     
 }
@@ -179,10 +180,10 @@ extension ContextLightPatternListVC: NSFetchedResultsControllerDelegate {
 extension ContextLightPatternListVC: UIPopoverPresentationControllerDelegate, EFColorSelectionViewControllerDelegate {
     
     func colorViewController(_ colorViewCntroller: EFColorSelectionViewController, didChangeColor color: UIColor) {
-            print("didchangecolor")
+            //print("didchangecolor")
             selectedColor = color
         
-            guard let entry = lightpatternViewModel?.lightPattern(at: selectedIndexPath) else { return }
+            guard let entry = contextViewModel.lightPatternForContext(indexPath: selectedIndexPath) else { return }
             if selectedColorIndex == 0 {
                 entry.color1 = selectedColor.encode()
                 LEDController.sharedInstance.setColor1(selectedColor)
@@ -192,13 +193,21 @@ extension ContextLightPatternListVC: UIPopoverPresentationControllerDelegate, EF
             } else if selectedColorIndex == 2 {
                 entry.color3 = selectedColor.encode()
             }
-            PersistentUtils.sharedInstance.coreDataStack.saveContext()
         
     }
         
     func colorPicker(_ sender: UIButton, indexPath: IndexPath, colorIndex: Int) {
             selectedIndexPath = indexPath
             selectedColorIndex = colorIndex
+        guard let entry = contextViewModel.lightPatternForContext(indexPath: selectedIndexPath) else { return }//lightpatternViewModel?.lightPattern(at: selectedIndexPath) else { return }
+            var selectedColor: UIColor!
+            if selectedColorIndex == 0 {
+                selectedColor = UIColor.color(withData: entry.color1!)
+            } else if selectedColorIndex == 1 {
+                selectedColor = UIColor.color(withData: entry.color2!)
+            } else if selectedColorIndex == 2 {
+                selectedColor = UIColor.color(withData: entry.color3!)
+            }
             let colorSelectionController = EFColorSelectionViewController()
             let navCtrl = UINavigationController(rootViewController: colorSelectionController)
             navCtrl.navigationBar.backgroundColor = UIColor.white
@@ -212,7 +221,8 @@ extension ContextLightPatternListVC: UIPopoverPresentationControllerDelegate, EF
             )
             
             colorSelectionController.delegate = self
-            colorSelectionController.color = self.view.backgroundColor ?? UIColor.white
+            colorSelectionController.color = selectedColor
+            colorSelectionController.set()
             
             if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
                 let doneBtn: UIBarButtonItem = UIBarButtonItem(
@@ -236,4 +246,19 @@ extension ContextLightPatternListVC: UIPopoverPresentationControllerDelegate, EF
                 }
             }
         }
+    
+    func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        return true
+    }
+}
+
+extension EFColorSelectionViewController {
+    
+    func set(){
+    //self.colorSelectionView().setSelectedIndex(
+    //index: EFSelectedColorView(rawValue: 1) ?? EFSelectedColorView.HSB,
+    //animated: true
+    //)
+    }
 }

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 import EFColorPicker
+import Highlightr
 
 // MARK: JournalEntryDelegate
 protocol LightPatternEntryDelegate {
@@ -22,13 +23,14 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var previewImageButton: UIButton!
-    @IBOutlet weak var codeTextView: UITextView!
     
     @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var codeView: UIView!
     
     var customColorView: ColorPaletteEditView!
     var selectedColor: [Data?] = [ nil, nil, nil ]
     var selectedColorIndex: Int!
+    var textView: UITextView!
     
     var filename: String?
     
@@ -42,7 +44,6 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     
     var lightpatternViewModel: LightPatternViewModel? {
         didSet {
-            configureView()
             context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
         }
     }
@@ -53,7 +54,6 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         super.viewDidLoad()
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         previewImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
-        configureView()
         
         if let customView = Bundle.main.loadNibNamed("ColorPaletteEditView", owner: self, options: nil)?.first as? ColorPaletteEditView {
             customColorView = customView
@@ -66,6 +66,10 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
             customColorView.delegate = self
         }
 
+    }
+    
+    override func viewDidLayoutSubviews() {
+        configureView()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -82,9 +86,25 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
             self.filename = filename
             backgroundImage.image = ImageUtils.getImageFromDocumentPath(for: filename)
         }
-        if let code = entry.code {
-            codeTextView.text = code
-        }
+        
+        let highlightr = Highlightr()
+        highlightr?.setTheme(to: "paraiso-dark")
+        let highlightedCode = highlightr?.highlight(entry.code ?? "", as: "javascript")
+        
+        let textStorage = CodeAttributedString()
+        textStorage.language = "Javascript"
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        
+        let textContainer = NSTextContainer(size: view.bounds.size)
+        layoutManager.addTextContainer(textContainer)
+        
+        textView = UITextView(frame: CGRect(x: 0,y: 0, width: codeView.frame.width, height: codeView.frame.height), textContainer: textContainer)
+        textView.attributedText = highlightedCode
+        textView.backgroundColor = UIColor.init(hue: 0, saturation: 0, brightness: 0, alpha: 0.8)
+        textView.delegate = self
+        codeView.addSubview(textView)
+        
         selectedColor[0] = entry.color1
         selectedColor[1] = entry.color2
         selectedColor[2] = entry.color3
@@ -98,10 +118,34 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         
         entry.name = name.text ?? ""
         entry.imageFilename = filename
-        entry.code = codeTextView.text
-        entry.color1 = selectedColor[0]
-        entry.color2 = selectedColor[1]
-        entry.color3 = selectedColor[2]
+        entry.code = textView.text
+        
+        if let code = entry.code {
+            entry.color1 = nil
+            entry.color2 = nil
+            entry.color3 = nil
+            if code.contains("color1") {
+                if selectedColor[0] != nil {
+                    entry.color1 = selectedColor[0]
+                } else {
+                    entry.color1 = UIColor.blue.encode()
+                }
+            }
+            if code.contains("color2") {
+                if selectedColor[1] != nil {
+                    entry.color2 = selectedColor[1]
+                } else {
+                    entry.color2 = UIColor.blue.encode()
+                }
+            }
+            if code.contains("color3") {
+                if selectedColor[2] != nil {
+                    entry.color3 = selectedColor[2]
+                } else {
+                    entry.color3 = UIColor.blue.encode()
+                }
+            }
+        }
         
     }
     
@@ -212,4 +256,38 @@ extension EditLightPatternVC: UIPopoverPresentationControllerDelegate, EFColorSe
             }
         }
     }
+}
+
+extension EditLightPatternVC: UITextViewDelegate {
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard let entry = lightpatternViewModel?.currentLightPattern else { return }
+
+        if let code = textView.text {
+            for i in 0...selectedColor.count-1 {
+                selectedColor[i] = nil
+            }
+            if code.contains("color1") {
+                if entry.color1 == nil {
+                    entry.color1 = UIColor.blue.encode()
+                }
+                selectedColor[0] = entry.color1
+            }
+            if code.contains("color2") {
+                if entry.color2 == nil {
+                    entry.color2 = UIColor.blue.encode()
+                }
+                selectedColor[1] = entry.color2
+            }
+            if code.contains("color3") {
+                if entry.color3 == nil {
+                    entry.color3 = UIColor.blue.encode()
+                }
+                selectedColor[2] = entry.color3
+            }
+        }
+        customColorView.initView(with: selectedColor)
+        
+    }
+    
 }
