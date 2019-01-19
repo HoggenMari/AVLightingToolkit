@@ -1,24 +1,32 @@
 PODS:
-  - EFColorPicker (1.2.0)
+  - EFColorPicker (1.2.1)
+  - Highlightr (2.1.0)
   - SwiftIcons (2.3.2)
   - SwiftSocket (2.0.2)
+  - Sync (5.1.0)
 
 DEPENDENCIES:
   - EFColorPicker
+  - Highlightr
   - SwiftIcons (~> 2.3.2)
   - SwiftSocket
+  - Sync (~> 5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - EFColorPicker
+    - Highlightr
     - SwiftIcons
     - SwiftSocket
+    - Sync
 
 SPEC CHECKSUMS:
-  EFColorPicker: 1af455606b2c8e6af2cfa6791348f1cbaff609ee
+  EFColorPicker: f0377b1c1752720647178a8917d3e2407342cb5f
+  Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
+  Sync: 0412c2b068eb7cf1a04607e948ef92cbd6114d0f
 
-PODFILE CHECKSUM: 7f2188dd628474c80e6056c4695fcde2e1c349b8
+PODFILE CHECKSUM: 143aaad6db271efda7690461d9d6a9ac19779b18
 
 COCOAPODS: 1.5.3

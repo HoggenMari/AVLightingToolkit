@@ -34,10 +34,15 @@ class ContextHeaderView: UITableViewHeaderFooterView {
         self.section = section
         tag = section
         
-        guard let filename = imageFilename, let image = ImageUtils.getImageFromDocumentPath(for: filename) else {
-            contextImage.image = UIImage(named: "car")
-            return
+        var image: UIImage!
+        if let filename = imageFilename, let img = ImageUtils.getImageFromDocumentPath(for: filename) {
+            image = img
+        } else if let filename = imageFilename, let img = UIImage(named: filename) {
+            image = img
+        } else {
+            image = UIImage(named: "car")
         }
+        
         
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradient.locations = [0.0, 0.75, 1.25]

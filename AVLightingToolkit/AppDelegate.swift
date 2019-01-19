@@ -10,15 +10,25 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControllerDelegate {
 
     var window: UIWindow?
 
+    var lightpatternViewModel: LightPatternViewModel!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         LEDController.sharedInstance
+    
+        //PersistentUtils.sharedInstance.coreDataStack.clearContext()
+        lightpatternViewModel = LightPatternViewModel()
+        lightpatternViewModel.initializeFetchController(self)
+        
+        if lightpatternViewModel.numberOfLightPatterns <= 0 {
+            PersistentUtils.sharedInstance.seedLightPattern()
+            PersistentUtils.sharedInstance.seedContext()
+        }
         
         return true
     }
@@ -47,5 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //self.saveContext()
     }
 
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        //
+    }
 }
-

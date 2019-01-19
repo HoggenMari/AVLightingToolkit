@@ -21,6 +21,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var toolBarHeightContraint: NSLayoutConstraint!
     @IBOutlet weak var addContextBtn: UIButton!
     @IBOutlet weak var addLightPatternBtn: UIButton!
+    @IBOutlet weak var brightnessSlider: UISlider!
     
     var newContextEntry: Context?
     var newLightPatternEntry: LightPattern?
@@ -31,6 +32,8 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     var selectedColor: UIColor!
     var selectedIndexPath: IndexPath!
     var selectedColorIndex: Int!
+    
+    var editMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +51,20 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         lightpatternViewModel = LightPatternViewModel()
         lightpatternViewModel.initializeFetchController(self)
         
+        //addContextBtn.isHidden = true
+        //addLightPatternBtn.isHidden = true
+        
+        if (editMode) {
+        toolbar.isHidden = false
         addContextBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.details), iconColor: .gray, postfixText: "Add Context", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
         addContextBtn.addTarget(self, action: #selector(addContextButtonTapped), for: .touchUpInside)
         
         addLightPatternBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.blurOn), iconColor: .gray, postfixText: "Add Light Pattern", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
         addLightPatternBtn.addTarget(self, action: #selector(addLightingPatternTapped), for: .touchUpInside)
+        } else {
+            toolbar.isHidden = true
+
+        }
         
     }
     
@@ -91,6 +103,11 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         
         return cell
     }
+    
+    @IBAction func sliderChanged(_ sender: Any) {
+        
+    }
+    
     
 }
 

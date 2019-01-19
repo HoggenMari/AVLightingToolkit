@@ -114,7 +114,7 @@ class LEDController {
         }
         
         loop+=1
-        if(loop > 50) {
+        if(loop > 255) {
             loop = 0
         }
         
@@ -131,6 +131,7 @@ class LEDController {
 
         context?.setObject(LED.self, forKeyedSubscript: "LED" as NSCopying & NSObjectProtocol)
         context?.setObject(test, forKeyedSubscript: "test" as NSCopying & NSObjectProtocol)
+        context?.setObject(loop, forKeyedSubscript: "loop" as NSCopying & NSObjectProtocol)
         context?.setObject(color1, forKeyedSubscript: "color1" as NSCopying & NSObjectProtocol)
         context?.setObject(color2, forKeyedSubscript: "color2" as NSCopying & NSObjectProtocol)
 

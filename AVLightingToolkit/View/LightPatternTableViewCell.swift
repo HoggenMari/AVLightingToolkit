@@ -21,6 +21,8 @@ class LightPatternTableViewCell: UITableViewCell {
         
         if let filename = imageFileName, let image = ImageUtils.getImageFromDocumentPath(for: filename) {
             itemImage.image = image
+        } else if let filename = imageFileName, let image = UIImage(named: filename) {
+            itemImage.image = image
         } else {
             itemImage.image = UIImage(named: "brightness_pattern")
         }

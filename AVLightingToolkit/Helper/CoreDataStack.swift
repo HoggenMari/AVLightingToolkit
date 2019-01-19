@@ -68,4 +68,13 @@ extension CoreDataStack {
       fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
     }
   }
+    
+    func clearContext(){
+        
+        do {
+            try mainContext.reset()
+        } catch let nserror as NSError {
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
 }

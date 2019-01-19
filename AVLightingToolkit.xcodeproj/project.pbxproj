@@ -31,9 +31,9 @@
 		7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */; };
 		7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */; };
 		7E8D8BE921CB889F0051FF3B /* EditContextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */; };
+		7E90E40321F3511D0063A6ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E90E40221F3511D0063A6ED /* Assets.xcassets */; };
 		7ED0979421DC76BE00F4A13B /* ContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */; };
 		7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */; };
-		7ED4F65F21D5C84F0055E45A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED4F65E21D5C84E0055E45A /* Assets.xcassets */; };
 		7ED93E0121BA1253008EC776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED93E0021BA1253008EC776 /* AppDelegate.swift */; };
 		7ED93E0321BA1253008EC776 /* ContextLightPatternListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED93E0221BA1253008EC776 /* ContextLightPatternListVC.swift */; };
 		7ED93E0621BA1253008EC776 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED93E0421BA1253008EC776 /* Main.storyboard */; };
@@ -94,9 +94,9 @@
 		7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContextVC.swift; sourceTree = "<group>"; };
+		7E90E40221F3511D0063A6ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextViewModel.swift; sourceTree = "<group>"; };
 		7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternViewModel.swift; sourceTree = "<group>"; };
-		7ED4F65E21D5C84E0055E45A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ED93DFD21BA1253008EC776 /* AVLightingToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVLightingToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ED93E0021BA1253008EC776 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ED93E0221BA1253008EC776 /* ContextLightPatternListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextLightPatternListVC.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 				7ED93E0C21BA1256008EC776 /* LaunchScreen.storyboard */,
 				7ED93E0F21BA1256008EC776 /* Info.plist */,
 				7ED93E0721BA1253008EC776 /* AVLightingToolkit.xcdatamodeld */,
-				7ED4F65E21D5C84E0055E45A /* Assets.xcassets */,
+				7E90E40221F3511D0063A6ED /* Assets.xcassets */,
 			);
 			path = AVLightingToolkit;
 			sourceTree = "<group>";
@@ -410,8 +410,8 @@
 				7ED93E0E21BA1256008EC776 /* LaunchScreen.storyboard in Resources */,
 				7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */,
 				7ED93E0621BA1253008EC776 /* Main.storyboard in Resources */,
+				7E90E40321F3511D0063A6ED /* Assets.xcassets in Resources */,
 				7E86427A21ED907200DEE207 /* ColorPaletteVC.xib in Resources */,
-				7ED4F65F21D5C84F0055E45A /* Assets.xcassets in Resources */,
 				7E86427C21EDB3D000DEE207 /* ColorPaletteEditView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +446,7 @@
 				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -455,6 +456,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
