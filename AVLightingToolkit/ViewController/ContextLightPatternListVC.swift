@@ -34,6 +34,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     var selectedColorIndex: Int!
     
     var editMode = false
+    var brightness = 0.5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +64,16 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         addLightPatternBtn.addTarget(self, action: #selector(addLightingPatternTapped), for: .touchUpInside)
         } else {
             toolbar.isHidden = true
-
+            brightnessSlider.value = 50
         }
         
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContextHeaderView") as! ContextHeaderView
 
@@ -79,7 +85,11 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return heightForFooterInSection
+        if section < numberOfSections(in: tableView) - 1 {
+            return heightForFooterInSection
+        } else {
+            return 0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -105,7 +115,8 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func sliderChanged(_ sender: Any) {
-        
+        brightness = Double((sender as! UISlider).value)
+        LEDController.sharedInstance.setBrightness(brightness)
     }
     
     

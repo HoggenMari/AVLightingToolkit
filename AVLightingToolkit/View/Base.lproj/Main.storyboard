@@ -24,11 +24,12 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h99-dn-Fpb">
                                         <rect key="frame" x="20" y="24.5" width="82" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="waI-lC-Huc">
                                         <rect key="frame" x="232" y="20" width="304" height="31"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="nW9-dW-OnX"/>
                                         </constraints>
@@ -37,7 +38,7 @@
                                         </connections>
                                     </slider>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="h99-dn-Fpb" firstAttribute="leading" secondItem="quK-JL-Anz" secondAttribute="leading" constant="20" id="Wdm-QA-hYn"/>
                                     <constraint firstItem="waI-lC-Huc" firstAttribute="centerY" secondItem="quK-JL-Anz" secondAttribute="centerY" id="hRn-zX-wZm"/>
@@ -699,8 +700,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFO-RB-nz3">
+                                <rect key="frame" x="0.0" y="20" width="768" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All LightPatterns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-mZ-PYa">
+                                        <rect key="frame" x="20" y="8.5" width="204" height="33.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JAp-mZ-PYa" firstAttribute="leading" secondItem="aFO-RB-nz3" secondAttribute="leading" constant="20" id="4H6-QE-6WU"/>
+                                    <constraint firstItem="JAp-mZ-PYa" firstAttribute="centerY" secondItem="aFO-RB-nz3" secondAttribute="centerY" id="LpH-Mr-Edq"/>
+                                    <constraint firstAttribute="height" constant="50" id="XAE-07-pjt"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AUf-k3-2ph">
-                                <rect key="frame" x="10" y="20" width="748" height="924"/>
+                                <rect key="frame" x="10" y="78" width="748" height="866"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="lightpatterncell" rowHeight="70" id="diS-Hl-UqN" customClass="AllLightPatternTableViewCell" customModule="AVLightingToolkit" customModuleProvider="target">
@@ -873,12 +890,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aFO-RB-nz3" firstAttribute="top" secondItem="UmM-yn-j6d" secondAttribute="top" id="3m2-Zf-E7f"/>
                             <constraint firstItem="AUf-k3-2ph" firstAttribute="leading" secondItem="UmM-yn-j6d" secondAttribute="leading" constant="10" id="46s-hp-dtI"/>
                             <constraint firstItem="H3I-nF-nfO" firstAttribute="top" secondItem="AUf-k3-2ph" secondAttribute="bottom" constant="10" id="4FJ-pj-vOV"/>
+                            <constraint firstItem="AUf-k3-2ph" firstAttribute="top" secondItem="aFO-RB-nz3" secondAttribute="bottom" constant="8" symbolic="YES" id="84p-p6-pKL"/>
                             <constraint firstItem="UmM-yn-j6d" firstAttribute="trailing" secondItem="H3I-nF-nfO" secondAttribute="trailing" id="JWp-rE-ahu"/>
                             <constraint firstItem="H3I-nF-nfO" firstAttribute="bottom" secondItem="UmM-yn-j6d" secondAttribute="bottom" id="m4q-QU-KAB"/>
                             <constraint firstItem="H3I-nF-nfO" firstAttribute="leading" secondItem="UmM-yn-j6d" secondAttribute="leading" id="nDX-Hx-hXS"/>
-                            <constraint firstItem="AUf-k3-2ph" firstAttribute="top" secondItem="UmM-yn-j6d" secondAttribute="top" id="qff-vM-CGy"/>
+                            <constraint firstItem="AUf-k3-2ph" firstAttribute="leading" secondItem="aFO-RB-nz3" secondAttribute="trailing" constant="-758" id="quk-Uc-qqi"/>
+                            <constraint firstItem="aFO-RB-nz3" firstAttribute="leading" secondItem="H3I-nF-nfO" secondAttribute="leading" id="tQG-Yh-oAi"/>
                             <constraint firstItem="UmM-yn-j6d" firstAttribute="trailing" secondItem="AUf-k3-2ph" secondAttribute="trailing" constant="10" id="x5c-uW-fO4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UmM-yn-j6d"/>

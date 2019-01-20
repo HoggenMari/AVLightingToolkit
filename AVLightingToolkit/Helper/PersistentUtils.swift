@@ -61,7 +61,7 @@ class PersistentUtils {
         
         
         let lightpatterns = [
-            (imageFilename: "20181226_1", name: "Speed as colours vertically", code: "var leds;"),
+            (imageFilename: "20181226_1", name: "Speed as colours vertically", code: "var mapToNative = function(leds,num) { return test.map(function (led) { return LED.setAllWithRedGreenBlue(color1.getRed(),color1.getGreen(),color1.getBlue());})};"),
             (imageFilename: "20181226_2", name: "Speed as colours horizontally", code: "var leds;"),
             (imageFilename: "20181018_1", name: "Speed as spatial information", code: "var leds;"),
             (imageFilename: "20181125_4", name: "Speed as spatial information + effects", code: "var leds;"),

@@ -79,6 +79,8 @@ class LEDController {
 
     var loop = 0
     
+    var brightness = 0.5
+    
     var colorVal1: UIColor = UIColor.red
     var colorVal2: UIColor = UIColor.green
     
@@ -146,9 +148,9 @@ class LEDController {
         let leds = mapFunction?.call(withArguments: [10,10]).toArray() as? [LED]
         
         for i in 0...test.count-1 {
-            let red = leds?[i].getRed().convertToData()
-            let green = leds?[i].getGreen().convertToData()
-            let blue = leds?[i].getBlue().convertToData()
+            let red = leds?[i].getRed().convertToData(brightness)
+            let green = leds?[i].getGreen().convertToData(brightness)
+            let blue = leds?[i].getBlue().convertToData(brightness)
             data?.append(red!)
             data?.append(green!)
             data?.append(blue!)
@@ -166,6 +168,10 @@ class LEDController {
     
     func setColor2(_ color: UIColor) {
         colorVal2 = color
+    }
+    
+    func setBrightness(_ value: Double) {
+        brightness = value
     }
     
 }
@@ -202,8 +208,8 @@ extension Data {
 }
 
 extension Int {
-    func convertToData() -> Data {
-        var v = self
+    func convertToData(_ brightness: Double) -> Data {
+        var v = Int(Double(self) * brightness)
         return Data(bytes: &v, count: MemoryLayout<Byte>.size)
     }
 }
