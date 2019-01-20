@@ -67,4 +67,16 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    @IBAction func switchChanged(_ sender: Any) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set((sender as! UISwitch).isOn, forKey: "editMode")
+        
+        /*let defaults = UserDefaults.standardUserDefaults()
+        if let name = defaults.stringForKey("editMode") {
+            print(name)
+        }*/
+    }
+    
+    
 }

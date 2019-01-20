@@ -75,6 +75,8 @@ class LEDController {
     var data: Data?
     weak var timer: Timer!
     
+    var numberLEDs = 24
+    
     var red = NSString(format:"%2X", 100) as String
 
     var loop = 0
@@ -111,7 +113,7 @@ class LEDController {
         var test = [LED]()
         //test.reserveCapacity(10)
         
-        for _ in 0...9 {
+        for _ in 0...numberLEDs-1 {
             test.append(LED())
         }
         
@@ -145,7 +147,7 @@ class LEDController {
         context?.evaluateScript(c)
         
         let mapFunction = context?.objectForKeyedSubscript("mapToNative")
-        let leds = mapFunction?.call(withArguments: [10,10]).toArray() as? [LED]
+        let leds = mapFunction?.call(withArguments: [numberLEDs,numberLEDs]).toArray() as? [LED]
         
         for i in 0...test.count-1 {
             let red = leds?[i].getRed().convertToData(brightness)

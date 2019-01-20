@@ -112,7 +112,7 @@ class ContextViewModel {
     }
     
     func lightPatternForContext(indexPath:IndexPath) -> LightPattern? {
-        let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.name), ascending: true)]
+        let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.position), ascending: true)]
         if let pattern = fetchedResultController?.fetchedObjects?[indexPath.section].lightpatterns?.sortedArray(using: sortDescriptor)[indexPath.row] as? LightPattern {
             return pattern
         }
@@ -120,7 +120,7 @@ class ContextViewModel {
     }
     
     func selectLightPattern(indexPath:IndexPath) {
-        let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.name), ascending: true)]
+        let sortDescriptor = [NSSortDescriptor(key: #keyPath(LightPattern.position), ascending: true)]
         if let pattern = fetchedResultController?.fetchedObjects?[indexPath.section].lightpatterns?.sortedArray(using: sortDescriptor)[indexPath.row] as? LightPattern {
             fetchedResultController?.fetchedObjects?[indexPath.section].selected = pattern
             PersistentUtils.sharedInstance.coreDataStack.saveContext()

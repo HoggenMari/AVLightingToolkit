@@ -19,6 +19,7 @@ extension LightPattern {
 
     @NSManaged public var imageFilename: String?
     @NSManaged public var name: String
+    @NSManaged public var position: Int16
     @NSManaged public var code: String?
     @NSManaged public var context: Context?
     @NSManaged public var color1: Data?

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18C54" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Context" representedClassName="Context" syncable="YES">
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,10 +14,11 @@
         <attribute name="color3" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="imageFilename" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="position" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="context" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Context" inverseName="lightpatterns" inverseEntity="Context" syncable="YES"/>
     </entity>
     <elements>
         <element name="Context" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="LightPattern" positionX="215.71875" positionY="120.66796875" width="128" height="150"/>
+        <element name="LightPattern" positionX="215.71875" positionY="120.66796875" width="128" height="165"/>
     </elements>
 </model>

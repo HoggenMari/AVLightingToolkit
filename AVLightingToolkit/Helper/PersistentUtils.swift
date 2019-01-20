@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class PersistentUtils {
     
@@ -61,28 +62,39 @@ class PersistentUtils {
         
         
         let lightpatterns = [
-            (imageFilename: "20181226_1", name: "Speed as colours vertically", code: "var mapToNative = function(leds,num) { return test.map(function (led) { return LED.setAllWithRedGreenBlue(color1.getRed(),color1.getGreen(),color1.getBlue());})};"),
-            (imageFilename: "20181226_2", name: "Speed as colours horizontally", code: "var leds;"),
-            (imageFilename: "20181018_1", name: "Speed as spatial information", code: "var leds;"),
-            (imageFilename: "20181125_4", name: "Speed as spatial information + effects", code: "var leds;"),
-            (imageFilename: "20181125_1", name: "Identify as colours", code: "var leds;"),
-            (imageFilename: "20181125_2", name: "Direction as movements", code: "var leds;"),
-            (imageFilename: "20181125_6", name: "Notification as effects", code: "var leds;"),
-            (imageFilename: "20181018_2", name: "Notification as colours + effects", code: "var leds;"),
-            (imageFilename: "20181125_7", name: "Direction as spatial information", code: "var leds;"),
-            (imageFilename: "20181125_8", name: "Direction as spatial information + effects", code: "var leds;"),
-            (imageFilename: "20181018_3", name: "Direction as colours + spatial information + effects", code: "var leds;"),
-            (imageFilename: "20181125_9", name: "Waiting as effects", code: "var leds;"),
-            (imageFilename: "20181018_4", name: "Waiting as colours + effects", code: "var leds;"),
-            (imageFilename: "20181125_10", name: "Waiting as movements", code: "var leds;"),
+            (imageFilename: "20181226_1", name: "Speed as colours vertically", position:1, code: "var mapToNative = function(leds,num) { return test.map(function (led, index) { if(index>=0 && index<=7) { return LED.setAllWithRedGreenBlue(interpolate(color1.getRed(), color2.getRed(), index, 8),interpolate(color1.getGreen(), color2.getGreen(), index, 8), interpolate(color1.getBlue(), color2.getBlue(), index, 8));} else if(index>=8 && index<=15) { return LED.setAllWithRedGreenBlue(0,0,0);} else if(index>=16 && index<=23){return LED.setAllWithRedGreenBlue(interpolate(color2.getRed(), color1.getRed(), index-15, 8),interpolate(color2.getGreen(), color1.getGreen(), index-15, 8), interpolate(color2.getBlue(), color1.getBlue(), index-15, 8));}})}; function interpolate(start, end, step, last) { return (end - start ) * step / last + start; }", color1: UIColor.red, color2: UIColor.green),
+            (imageFilename: "20181226_2", name: "Speed as colours horizontally", position:2, code: "var mapToNative = function(leds,num) { return test.map(function (led, index) { if(index>=0 && index<=7) { return LED.setAllWithRedGreenBlue(0,0,0);} else if(index>=8 && index<=11) { return LED.setAllWithRedGreenBlue(interpolate(color1.getRed(), color2.getRed(), index-8, 4),interpolate(color1.getGreen(), color2.getGreen(), index-8, 4), interpolate(color1.getBlue(), color2.getBlue(), index-8, 4));} else if(index>=12 && index<=15) { return LED.setAllWithRedGreenBlue(interpolate(color2.getRed(), color1.getRed(), index-11, 4),interpolate(color2.getGreen(), color1.getGreen(), index-11, 4), interpolate(color2.getBlue(), color1.getBlue(), index-11, 4));} else if(index>=16 && index<=23){ return LED.setAllWithRedGreenBlue(0,0,0);}})}; function interpolate(start, end, step, last) { return (end - start ) * step / last + start; }", color1: UIColor.red, color2: UIColor.green),
+            (imageFilename: "20181018_1", name: "Speed as spatial information", position:3, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_4", name: "Speed as spatial information + effects", position:4, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_1", name: "Identify as colours", position:5, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_2", name: "Direction as movements", position:6, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_6", name: "Notification as effects", position:7, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181018_2", name: "Notification as colours + effects", position:8, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_7", name: "Direction as spatial information", position:9, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_8", name: "Direction as spatial information + effects", position:10, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181018_3", name: "Direction as colours + spatial information + effects", position:11, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_9", name: "Waiting as effects", position:12, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181018_4", name: "Waiting as colours + effects", position:13, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_10", name: "Waiting as movements", position:14, code: "var leds;", color1: UIColor.red, color2: nil)
 
         ]
         
         for lightpattern in lightpatterns {
             let newLightPattern = NSEntityDescription.insertNewObject(forEntityName: "LightPattern", into: coreDataStack.mainContext) as! LightPattern
             newLightPattern.name = lightpattern.name
+            newLightPattern.position = Int16(lightpattern.position)
             newLightPattern.code = lightpattern.code
             newLightPattern.imageFilename = lightpattern.imageFilename
+            if lightpattern.color1 != nil {
+                var c1 = UIColor.clear
+                c1 = lightpattern.color1 ?? UIColor.clear
+                newLightPattern.color1 = c1.encode()
+            }
+            if lightpattern.color2 != nil {
+                var c2 = UIColor.clear
+                c2 = lightpattern.color2 ?? UIColor.clear
+                newLightPattern.color2 = c2.encode()
+            }
         }
         
         do {

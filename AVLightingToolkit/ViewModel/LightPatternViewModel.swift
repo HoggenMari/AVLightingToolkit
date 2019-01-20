@@ -42,6 +42,7 @@ class LightPatternViewModel {
     
     func createNewLightPattern() -> LightPattern? {
         currentLightPattern = LightPattern(context: PersistentUtils.sharedInstance.coreDataStack.mainContext)
+        currentLightPattern?.position = Int16(numberOfLightPatterns)
         return currentLightPattern
     }
     
@@ -89,9 +90,24 @@ class LightPatternViewModel {
     }
     
     func deleteLightPattern(at section: Int) {
+        //let sections = fetchedResultController?.fetchedObjects?[section]
+        //PersistentUtils.sharedInstance.coreDataStack.mainContext.delete(sections!)
+        //PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        
+        
         let sections = fetchedResultController?.fetchedObjects?[section]
         PersistentUtils.sharedInstance.coreDataStack.mainContext.delete(sections!)
         PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        
+        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count, sectionUpperBound > section + 1 else {
+            return
+        }
+        
+        for n in section...sectionUpperBound - 1 {
+            let pattern = fetchedResultController?.fetchedObjects?[n]
+            pattern?.position = Int16(n)
+            PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        }
         
     }
 }

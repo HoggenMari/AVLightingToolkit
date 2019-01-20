@@ -64,7 +64,9 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         addLightPatternBtn.addTarget(self, action: #selector(addLightingPatternTapped), for: .touchUpInside)
         } else {
             toolbar.isHidden = true
-            brightnessSlider.value = 50
+            let defaults = UserDefaults.standard
+            let brightness = defaults.double(forKey: "brightness")
+            brightnessSlider.value = Float(brightness)
         }
         
     }
@@ -116,6 +118,8 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func sliderChanged(_ sender: Any) {
         brightness = Double((sender as! UISlider).value)
+        let defaults = UserDefaults.standard
+        defaults.set(brightness, forKey: "brightness")
         LEDController.sharedInstance.setBrightness(brightness)
     }
     

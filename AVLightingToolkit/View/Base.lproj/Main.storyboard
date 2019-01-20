@@ -385,6 +385,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TPa-RE-kmF">
                                         <rect key="frame" x="259" y="14.5" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchChanged:" destination="wsi-We-ycd" eventType="valueChanged" id="tpD-gJ-jgo"/>
+                                        </connections>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -916,6 +919,6 @@
     </scenes>
     <resources>
         <image name="brightness_pattern" width="400" height="280"/>
-        <image name="car" width="2842" height="764"/>
+        <image name="car" width="682.08001708984375" height="183.36000061035156"/>
     </resources>
 </document>
