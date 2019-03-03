@@ -22,6 +22,7 @@
                 </imageView>
                 <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecH-lu-0J1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
+                    <gestureRecognizers/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZ4-1J-cPW">
                     <rect key="frame" x="10" y="27" width="64" height="30"/>
@@ -68,6 +69,6 @@
         </view>
     </objects>
     <resources>
-        <image name="car" width="2842" height="764"/>
+        <image name="car" width="682.08001708984375" height="183.36000061035156"/>
     </resources>
 </document>

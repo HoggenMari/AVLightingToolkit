@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import EFColorPicker
+//import EFColorPicker
 
 class ColorPaletteEditView: UIStackView  {
     

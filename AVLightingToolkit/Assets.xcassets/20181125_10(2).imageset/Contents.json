@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "car_1496*160.png",
+      "filename" : "20181125_10(2).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "car_1496*160@2x.png",
       "scale" : "2x"
     },
     {

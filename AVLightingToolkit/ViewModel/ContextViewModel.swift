@@ -93,6 +93,14 @@ class ContextViewModel {
         }
     }
     
+    func toggleHidde(at section: Int) {
+        let sections = fetchedResultController?.fetchedObjects?[section]
+        let isHidden = sections?.hidden ?? false
+        sections?.hidden = !isHidden
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        
+    }
+    
     var numberOfContexts: Int {
         if let results = fetchedResultController?.fetchedObjects {
             return results.count

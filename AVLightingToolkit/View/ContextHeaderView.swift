@@ -12,6 +12,7 @@ import UIKit
 protocol ContextHeaderViewDelegate{
     func deleteButtonTapped(at section:Int)
     func editContextPattern(sender: UIGestureRecognizer)
+    func toggleHidden(at section:Int)
 }
 class ContextHeaderView: UITableViewHeaderFooterView {
     
@@ -43,7 +44,6 @@ class ContextHeaderView: UITableViewHeaderFooterView {
             image = UIImage(named: "car")
         }
         
-        
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
         gradient.locations = [0.0, 0.75, 1.25]
         gradient.startPoint = CGPoint(x: 0.0,y: 0.0)
@@ -51,6 +51,10 @@ class ContextHeaderView: UITableViewHeaderFooterView {
         
         gradientView.layer.insertSublayer(gradient, at: 0)
         contextImage.image = image
+        
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressed:")
+        longPressRecognizer.minimumPressDuration = 3
+        addGestureRecognizer(longPressRecognizer)
     }
     
     override func layoutSubviews() {
@@ -66,5 +70,14 @@ class ContextHeaderView: UITableViewHeaderFooterView {
     
     @objc func sectionHeaderTapped(sender: UIGestureRecognizer) {
         self.delegate?.editContextPattern(sender: sender)
+    }
+    
+    @objc func longPressed(_ sender: UILongPressGestureRecognizer) {
+        
+        if sender.state == UIGestureRecognizer.State.began {
+            print("test")
+            print(section)
+            self.delegate?.toggleHidden(at: section)
+        }
     }
 }

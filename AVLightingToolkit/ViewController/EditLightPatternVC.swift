@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-import EFColorPicker
+//import EFColorPicker
 import Highlightr
 
 // MARK: JournalEntryDelegate

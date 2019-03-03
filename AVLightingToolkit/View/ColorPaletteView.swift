@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import EFColorPicker
+//import EFColorPicker
 
 protocol ColorPaletteDelegate {
     func didTappedColor(_ sender: UIButton, colorIndex: Int)
@@ -27,7 +27,7 @@ class ColorPaletteView: UIStackView  {
     
     func initView(with color: [Data?]) {
         
-        if color.count >= 1, let c1 = color[0]  {
+         if color.count >= 1, let c1 = color[0]  {
          color1.isHidden = false
          color1.setIcon(icon: .googleMaterialDesign(.brightness1), iconSize: 30, color: UIColor.color(withData: c1), backgroundColor: UIColor.clear, forState: .normal)
          }
@@ -43,6 +43,7 @@ class ColorPaletteView: UIStackView  {
          }
         
     }
+    
     @IBAction func color1Tapped(_ sender: UIButton) {
         delegate?.didTappedColor(sender, colorIndex: 0)
     }

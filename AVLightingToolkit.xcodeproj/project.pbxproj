@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0A978121FC0E515ED3BFCB34 /* Pods_AVLightingToolkitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF0FCB5BF9B7DF121F231B37 /* Pods_AVLightingToolkitUITests.framework */; };
+		5A7895C22213BB56005DBD92 /* UDPBroadcastConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7895C12213BB56005DBD92 /* UDPBroadcastConnection.swift */; };
+		5A9245D22224C92000DF9037 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A9245D12224C92000DF9037 /* Assets.xcassets */; };
+		5A92461F2224DDA700DF9037 /* EFColorComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246142224DDA600DF9037 /* EFColorComponentView.swift */; };
+		5A9246202224DDA700DF9037 /* EFControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246152224DDA600DF9037 /* EFControl.swift */; };
+		5A9246212224DDA700DF9037 /* EFColorSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246162224DDA600DF9037 /* EFColorSelectionView.swift */; };
+		5A9246222224DDA700DF9037 /* EFColorWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246172224DDA700DF9037 /* EFColorWheelView.swift */; };
+		5A9246232224DDA700DF9037 /* EFRGBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246182224DDA700DF9037 /* EFRGBView.swift */; };
+		5A9246242224DDA700DF9037 /* EFColorSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9246192224DDA700DF9037 /* EFColorSelectionViewController.swift */; };
+		5A9246252224DDA700DF9037 /* EFSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A92461A2224DDA700DF9037 /* EFSliderView.swift */; };
+		5A9246262224DDA700DF9037 /* EFThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A92461B2224DDA700DF9037 /* EFThumbView.swift */; };
+		5A9246272224DDA700DF9037 /* EFColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A92461C2224DDA700DF9037 /* EFColorView.swift */; };
+		5A9246282224DDA700DF9037 /* EFHSBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A92461D2224DDA700DF9037 /* EFHSBView.swift */; };
+		5A9246292224DDA700DF9037 /* EFColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A92461E2224DDA700DF9037 /* EFColorUtils.swift */; };
 		7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */; };
 		7E2AD8C221DF835C006469D5 /* LightPatternTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C121DF835C006469D5 /* LightPatternTableViewCell.swift */; };
 		7E2AD8C421DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AD8C321DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift */; };
@@ -31,7 +44,6 @@
 		7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */; };
 		7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */; };
 		7E8D8BE921CB889F0051FF3B /* EditContextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */; };
-		7E90E40321F3511D0063A6ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E90E40221F3511D0063A6ED /* Assets.xcassets */; };
 		7ED0979421DC76BE00F4A13B /* ContextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */; };
 		7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */; };
 		7ED93E0121BA1253008EC776 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED93E0021BA1253008EC776 /* AppDelegate.swift */; };
@@ -70,6 +82,20 @@
 /* Begin PBXFileReference section */
 		27057838E3CF1A5FE8BAAC6F /* Pods-AVLightingToolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.release.xcconfig"; sourceTree = "<group>"; };
 		2DEBE18874CC444EFC1B3C88 /* Pods-AVLightingToolkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit.debug.xcconfig"; sourceTree = "<group>"; };
+		5A7895C02213BB56005DBD92 /* UDPBroadcast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UDPBroadcast.h; path = "../../../../../Downloads/UDPBroadcastConnection-master/UDPBroadcast/UDPBroadcast.h"; sourceTree = "<group>"; };
+		5A7895C12213BB56005DBD92 /* UDPBroadcastConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UDPBroadcastConnection.swift; path = "../../../../../Downloads/UDPBroadcastConnection-master/UDPBroadcast/UDPBroadcastConnection.swift"; sourceTree = "<group>"; };
+		5A9245D12224C92000DF9037 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A9246142224DDA600DF9037 /* EFColorComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorComponentView.swift; sourceTree = "<group>"; };
+		5A9246152224DDA600DF9037 /* EFControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFControl.swift; sourceTree = "<group>"; };
+		5A9246162224DDA600DF9037 /* EFColorSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorSelectionView.swift; sourceTree = "<group>"; };
+		5A9246172224DDA700DF9037 /* EFColorWheelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorWheelView.swift; sourceTree = "<group>"; };
+		5A9246182224DDA700DF9037 /* EFRGBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFRGBView.swift; sourceTree = "<group>"; };
+		5A9246192224DDA700DF9037 /* EFColorSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorSelectionViewController.swift; sourceTree = "<group>"; };
+		5A92461A2224DDA700DF9037 /* EFSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFSliderView.swift; sourceTree = "<group>"; };
+		5A92461B2224DDA700DF9037 /* EFThumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFThumbView.swift; sourceTree = "<group>"; };
+		5A92461C2224DDA700DF9037 /* EFColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorView.swift; sourceTree = "<group>"; };
+		5A92461D2224DDA700DF9037 /* EFHSBView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFHSBView.swift; sourceTree = "<group>"; };
+		5A92461E2224DDA700DF9037 /* EFColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFColorUtils.swift; sourceTree = "<group>"; };
 		6FDE02D8E8A7FA62AB668ECC /* Pods-AVLightingToolkitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVLightingToolkitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AVLightingToolkitTests/Pods-AVLightingToolkitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7E1C3D0421D72DD700278D29 /* EditLightPatternVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLightPatternVC.swift; sourceTree = "<group>"; };
 		7E2AD8C121DF835C006469D5 /* LightPatternTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightPatternTableViewCell.swift; sourceTree = "<group>"; };
@@ -94,7 +120,6 @@
 		7E8D8BE421CB88560051FF3B /* UIViewController+HideKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HideKeyboard.swift"; sourceTree = "<group>"; };
 		7E8D8BE621CB885F0051FF3B /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		7E8D8BE821CB889F0051FF3B /* EditContextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditContextVC.swift; sourceTree = "<group>"; };
-		7E90E40221F3511D0063A6ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ED0979321DC76BE00F4A13B /* ContextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextViewModel.swift; sourceTree = "<group>"; };
 		7ED0979521DCD57000F4A13B /* LightPatternViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightPatternViewModel.swift; sourceTree = "<group>"; };
 		7ED93DFD21BA1253008EC776 /* AVLightingToolkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVLightingToolkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +199,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5A9246132224DBA300DF9037 /* SupportingLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				5A9246142224DDA600DF9037 /* EFColorComponentView.swift */,
+				5A9246162224DDA600DF9037 /* EFColorSelectionView.swift */,
+				5A9246192224DDA700DF9037 /* EFColorSelectionViewController.swift */,
+				5A92461E2224DDA700DF9037 /* EFColorUtils.swift */,
+				5A92461C2224DDA700DF9037 /* EFColorView.swift */,
+				5A9246172224DDA700DF9037 /* EFColorWheelView.swift */,
+				5A9246152224DDA600DF9037 /* EFControl.swift */,
+				5A92461D2224DDA700DF9037 /* EFHSBView.swift */,
+				5A9246182224DDA700DF9037 /* EFRGBView.swift */,
+				5A92461A2224DDA700DF9037 /* EFSliderView.swift */,
+				5A92461B2224DDA700DF9037 /* EFThumbView.swift */,
+			);
+			path = SupportingLibraries;
+			sourceTree = "<group>";
+		};
 		7E5AF15A21DDA4C4009AD327 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +275,8 @@
 		7E8D8BDF21CB88180051FF3B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				5A7895C02213BB56005DBD92 /* UDPBroadcast.h */,
+				5A7895C12213BB56005DBD92 /* UDPBroadcastConnection.swift */,
 				7E73D32B21CF6100003A4C22 /* CoreDataStack.swift */,
 				7E8D8BE021CB88180051FF3B /* ImageUtils.swift */,
 				7EF0902B21D642F4002D7DBB /* LEDController.swift */,
@@ -266,6 +311,7 @@
 		7ED93DFF21BA1253008EC776 /* AVLightingToolkit */ = {
 			isa = PBXGroup;
 			children = (
+				5A9246132224DBA300DF9037 /* SupportingLibraries */,
 				7ED93E0021BA1253008EC776 /* AppDelegate.swift */,
 				7E8D8BDF21CB88180051FF3B /* Helper */,
 				7E5AF15B21DDA4F1009AD327 /* View */,
@@ -275,7 +321,7 @@
 				7ED93E0C21BA1256008EC776 /* LaunchScreen.storyboard */,
 				7ED93E0F21BA1256008EC776 /* Info.plist */,
 				7ED93E0721BA1253008EC776 /* AVLightingToolkit.xcdatamodeld */,
-				7E90E40221F3511D0063A6ED /* Assets.xcassets */,
+				5A9245D12224C92000DF9037 /* Assets.xcassets */,
 			);
 			path = AVLightingToolkit;
 			sourceTree = "<group>";
@@ -410,7 +456,7 @@
 				7ED93E0E21BA1256008EC776 /* LaunchScreen.storyboard in Resources */,
 				7E69890E21C21E7B00BDBE8C /* ContextHeaderView.xib in Resources */,
 				7ED93E0621BA1253008EC776 /* Main.storyboard in Resources */,
-				7E90E40321F3511D0063A6ED /* Assets.xcassets in Resources */,
+				5A9245D22224C92000DF9037 /* Assets.xcassets in Resources */,
 				7E86427A21ED907200DEE207 /* ColorPaletteVC.xib in Resources */,
 				7E86427C21EDB3D000DEE207 /* ColorPaletteEditView.xib in Resources */,
 			);
@@ -442,7 +488,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/EFColorPicker/EFColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
@@ -452,7 +497,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EFColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Highlightr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftIcons.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
@@ -542,20 +586,32 @@
 				7E86427621ED5E8200DEE207 /* UIColor+CoreData.swift in Sources */,
 				7E2AD8C621DF83B3006469D5 /* AllLightPatternTableViewCell.swift in Sources */,
 				7E2AD8C221DF835C006469D5 /* LightPatternTableViewCell.swift in Sources */,
+				5A9246242224DDA700DF9037 /* EFColorSelectionViewController.swift in Sources */,
 				7ED946CC21CBA3AC006A66A9 /* LightPattern+CoreDataProperties.swift in Sources */,
 				7ED0979621DCD57000F4A13B /* LightPatternViewModel.swift in Sources */,
+				5A9246272224DDA700DF9037 /* EFColorView.swift in Sources */,
+				5A9246232224DDA700DF9037 /* EFRGBView.swift in Sources */,
 				7ED946CE21CBA3AC006A66A9 /* Context+CoreDataProperties.swift in Sources */,
 				7E86427221ED56D300DEE207 /* ColorPaletteView.swift in Sources */,
 				7ED946CD21CBA3AC006A66A9 /* Context+CoreDataClass.swift in Sources */,
+				5A9246292224DDA700DF9037 /* EFColorUtils.swift in Sources */,
+				5A9246252224DDA700DF9037 /* EFSliderView.swift in Sources */,
 				7ED93E0921BA1253008EC776 /* AVLightingToolkit.xcdatamodeld in Sources */,
 				7EF0902C21D642F4002D7DBB /* LEDController.swift in Sources */,
 				7E5AF16121DDAF1B009AD327 /* MasterListTableVIewCell.swift in Sources */,
 				7E8D8BE521CB88560051FF3B /* UIViewController+HideKeyboard.swift in Sources */,
+				5A9246262224DDA700DF9037 /* EFThumbView.swift in Sources */,
 				7E8D8BE721CB885F0051FF3B /* OverlayViewController.swift in Sources */,
+				5A9246282224DDA700DF9037 /* EFHSBView.swift in Sources */,
 				7E378BD521DDBA5D00E69B09 /* LightPatternVC.swift in Sources */,
+				5A9246222224DDA700DF9037 /* EFColorWheelView.swift in Sources */,
+				5A7895C22213BB56005DBD92 /* UDPBroadcastConnection.swift in Sources */,
+				5A92461F2224DDA700DF9037 /* EFColorComponentView.swift in Sources */,
 				7ED946CB21CBA3AC006A66A9 /* LightPattern+CoreDataClass.swift in Sources */,
 				7E69890C21C21E1F00BDBE8C /* ContextHeaderView.swift in Sources */,
+				5A9246212224DDA700DF9037 /* EFColorSelectionView.swift in Sources */,
 				7E73D32C21CF6100003A4C22 /* CoreDataStack.swift in Sources */,
+				5A9246202224DDA700DF9037 /* EFControl.swift in Sources */,
 				7E2AD8C421DF8384006469D5 /* AddLightPatternToContextTableViewCell.swift in Sources */,
 				7E1C3D0521D72DD700278D29 /* EditLightPatternVC.swift in Sources */,
 				7E86427821ED8FBD00DEE207 /* ColorPaletteVC.swift in Sources */,

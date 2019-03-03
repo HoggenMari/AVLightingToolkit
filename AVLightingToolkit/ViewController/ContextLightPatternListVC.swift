@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import EFColorPicker
+//import EFColorPicker
 
 class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -80,7 +80,11 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContextHeaderView") as! ContextHeaderView
 
         if let context = contextViewModel.contextAtSection(section) {
-            headerView.initCellItem(for: section, title: context.name, imageFilename: context.imageFilename)
+            if !context.hidden {
+                headerView.initCellItem(for: section, title: context.name, imageFilename: context.imageFilename)
+            } else {
+                headerView.initCellItem(for: section, title: "Context " + String(section+1), imageFilename: nil)
+            }
             headerView.delegate = self
         }
         return headerView
@@ -150,6 +154,27 @@ extension ContextLightPatternListVC: CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath) {
         contextViewModel.selectLightPattern(indexPath: indexPath)
         LEDController.sharedInstance.play(contextViewModel.lightPatternForContext(indexPath: indexPath)?.code ?? "")
+        
+        if let color1 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color1 {
+            LEDController.sharedInstance.setColor1(UIColor.color(withData: color1))
+        }
+        
+        if let color2 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color2 {
+            LEDController.sharedInstance.setColor2(UIColor.color(withData: color2))
+        }
+
+    
+        /*guard let entry = contextViewModel.lightPatternForContext(indexPath: selectedIndexPath) else { return }
+        if selectedColorIndex == 0 {
+            entry.color1 = selectedColor.encode()
+            LEDController.sharedInstance.setColor1(selectedColor)
+        } else if selectedColorIndex == 1 {
+            entry.color2 = selectedColor.encode()
+            LEDController.sharedInstance.setColor2(selectedColor)
+        } else if selectedColorIndex == 2 {
+            entry.color3 = selectedColor.encode()
+        }*/
+
     }
     
     func colorTapped(_ sender: UIButton, indexPath: IndexPath, colorIndex: Int) {
@@ -182,6 +207,10 @@ extension ContextLightPatternListVC: ContextEntryDelegate, LightPatternEntryDele
 }
 
 extension ContextLightPatternListVC: ContextHeaderViewDelegate {
+    func toggleHidden(at section: Int) {
+        contextViewModel.toggleHidde(at: section)
+    }
+    
     func deleteButtonTapped(at section: Int) {
         contextViewModel.deleteContext(at: section)
     }

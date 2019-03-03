@@ -75,7 +75,7 @@ class LEDController {
     var data: Data?
     weak var timer: Timer!
     
-    var numberLEDs = 24
+    var numberLEDs = 21
     
     var red = NSString(format:"%2X", 100) as String
 
@@ -88,10 +88,19 @@ class LEDController {
     
     var code: String!
     
+    var broadcastConnection: UDPBroadcastConnection!
+    
     init() {
         client = UDPClient(address: IP_ADDRESS, port: PORT)
-    
-        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        //
+        //UDPBroadcastConnection(port: UInt16(PORT), handler: [unowned, self] (response: (ipAddress: String, port: Int, response: [UInt8])) -> Void, in
+            //print("Received from \(response.ipAddress):\(response.port):\n\n\(response.response)"))
+        broadcastConnection = UDPBroadcastConnection(port: UInt16(PORT)) { [unowned self] (ipAddress: String, port: Int, response: [UInt8]) -> Void in
+            let log = "Received from \(ipAddress):\(port):\n\n\(response)"
+            //self.logView.text = log
+        }
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
     func play(_ code: String) {
@@ -122,6 +131,7 @@ class LEDController {
             loop = 0
         }
         
+        let l = Double(loop) / 255.0
 
         let red1 = colorVal1.getRGBAComponents()?.red
         let green1 = colorVal1.getRGBAComponents()?.green
@@ -135,7 +145,7 @@ class LEDController {
 
         context?.setObject(LED.self, forKeyedSubscript: "LED" as NSCopying & NSObjectProtocol)
         context?.setObject(test, forKeyedSubscript: "test" as NSCopying & NSObjectProtocol)
-        context?.setObject(loop, forKeyedSubscript: "loop" as NSCopying & NSObjectProtocol)
+        context?.setObject(l, forKeyedSubscript: "loop" as NSCopying & NSObjectProtocol)
         context?.setObject(color1, forKeyedSubscript: "color1" as NSCopying & NSObjectProtocol)
         context?.setObject(color2, forKeyedSubscript: "color2" as NSCopying & NSObjectProtocol)
 
@@ -159,7 +169,8 @@ class LEDController {
         }
         
         if let sendData = data {
-            client?.send(data: sendData)
+            //client?.send(data: sendData)
+            broadcastConnection.sendBroadcast(sendData)
         }
     
     }
