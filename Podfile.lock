@@ -2,12 +2,14 @@ PODS:
   - Highlightr (2.1.0)
   - SwiftIcons (2.3.2)
   - SwiftSocket (2.0.2)
+  - SwiftyJSON (4.2.0)
   - Sync (5.1.0)
 
 DEPENDENCIES:
   - Highlightr
   - SwiftIcons (~> 2.3.2)
   - SwiftSocket
+  - SwiftyJSON (~> 4.0)
   - Sync (~> 5)
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - Highlightr
     - SwiftIcons
     - SwiftSocket
+    - SwiftyJSON
     - Sync
 
 SPEC CHECKSUMS:
   Highlightr: 595f3e100737c8de41113385da8bd0b5b65212c6
   SwiftIcons: e652cfd2676441c462ad57b6e92977faf577e590
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   Sync: 0412c2b068eb7cf1a04607e948ef92cbd6114d0f
 
-PODFILE CHECKSUM: 9f2421468f0023224c0dd559f9d21ef6f17d03ef
+PODFILE CHECKSUM: 3de72dcdc9d8ca87f6c5f0eb2a7bd57cb4070e9d
 
 COCOAPODS: 1.5.3

@@ -95,8 +95,8 @@ class LEDController {
         //
         //UDPBroadcastConnection(port: UInt16(PORT), handler: [unowned, self] (response: (ipAddress: String, port: Int, response: [UInt8])) -> Void, in
             //print("Received from \(response.ipAddress):\(response.port):\n\n\(response.response)"))
-        broadcastConnection = UDPBroadcastConnection(port: UInt16(PORT)) { [unowned self] (ipAddress: String, port: Int, response: [UInt8]) -> Void in
-            let log = "Received from \(ipAddress):\(port):\n\n\(response)"
+        broadcastConnection = UDPBroadcastConnection(port: UInt16(PORT)) { (ipAddress: String, port: Int, response: [UInt8]) -> Void in
+            _ = "Received from \(ipAddress):\(port):\n\n\(response)"
             //self.logView.text = log
         }
         

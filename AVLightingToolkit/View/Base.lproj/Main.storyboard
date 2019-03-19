@@ -919,6 +919,6 @@
     </scenes>
     <resources>
         <image name="brightness_pattern" width="400" height="280"/>
-        <image name="car" width="682.08001708984375" height="183.36000061035156"/>
+        <image name="car" width="1496" height="160"/>
     </resources>
 </document>

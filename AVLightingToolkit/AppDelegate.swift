@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
         // Override point for customization after application launch.
         
         LEDController.sharedInstance
+        UnityCommunication.sharedInstance
     
         //PersistentUtils.sharedInstance.coreDataStack.clearContext()
         lightpatternViewModel = LightPatternViewModel()

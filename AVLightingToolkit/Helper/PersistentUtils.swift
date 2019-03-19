@@ -22,7 +22,7 @@ class PersistentUtils {
         let lightpatternFetchRequest = NSFetchRequest<LightPattern>(entityName: "LightPattern")
         let allLightPatterns = try! coreDataStack.mainContext.fetch(lightpatternFetchRequest)
         
-        let lightPattern1 = allLightPatterns.filter({ (l: LightPattern) -> Bool in
+        _ = allLightPatterns.filter({ (l: LightPattern) -> Bool in
             return l.name == "LightTestPattern"
         }).first
         
