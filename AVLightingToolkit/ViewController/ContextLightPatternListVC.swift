@@ -12,6 +12,8 @@ import CoreData
 
 class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     let heightForFooterInSection: CGFloat = 15
         
     @IBOutlet var lightPatternTableView: UITableView!
@@ -26,14 +28,14 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     var newContextEntry: Context?
     var newLightPatternEntry: LightPattern?
     
-    var contextViewModel: ContextViewModel!
-    var lightpatternViewModel: LightPatternViewModel!
+    var contextViewModel: ContextModelController!
+    var lightpatternViewModel: LightPatternModelController!
     
     var selectedColor: UIColor!
     var selectedIndexPath: IndexPath!
     var selectedColorIndex: Int!
     
-    var editMode = false
+    var editMode = true
     var brightness = 0.5
     
     override func viewDidLoad() {
@@ -46,10 +48,10 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         lightPatternTableView.delegate = self
         lightPatternTableView.dataSource = self
         
-        contextViewModel = ContextViewModel()
+        contextViewModel = appDelegate.contextModelController
         contextViewModel.initializeFetchController(self)
         
-        lightpatternViewModel = LightPatternViewModel()
+        lightpatternViewModel = appDelegate.lightpatternModelController //LightPatternModelController()
         lightpatternViewModel.initializeFetchController(self)
         
         //addContextBtn.isHidden = true

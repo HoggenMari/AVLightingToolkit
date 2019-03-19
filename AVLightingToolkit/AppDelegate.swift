@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
 
     var window: UIWindow?
 
-    var lightpatternViewModel: LightPatternViewModel!
+    var lightpatternModelController: LightPatternModelController!
+    public var contextModelController: ContextModelController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,13 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
         UnityCommunication.sharedInstance
     
         //PersistentUtils.sharedInstance.coreDataStack.clearContext()
-        lightpatternViewModel = LightPatternViewModel()
-        lightpatternViewModel.initializeFetchController(self)
+        lightpatternModelController = LightPatternModelController()
+        lightpatternModelController.initializeFetchController(self)
         
-        if lightpatternViewModel.numberOfLightPatterns <= 0 {
+        if lightpatternModelController.numberOfLightPatterns <= 0 {
             PersistentUtils.sharedInstance.seedLightPattern()
             PersistentUtils.sharedInstance.seedContext()
         }
+        
+        contextModelController = ContextModelController()
+        contextModelController.initializeFetchController(self)
         
         return true
     }

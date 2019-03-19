@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class ContextViewModel {
+class ContextModelController {
     
     var currentContext: Context?
     var childContext: NSManagedObjectContext!

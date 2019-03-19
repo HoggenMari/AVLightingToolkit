@@ -19,6 +19,8 @@ protocol LightPatternEntryDelegate {
 
 class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var name: UITextField!
@@ -42,16 +44,20 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         }
     }
     
-    var lightpatternViewModel: LightPatternViewModel? {
+    var lightpatternViewModel: LightPatternModelController! /*? {
         didSet {
             context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
         }
-    }
+    }*/
     
     var context: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lightpatternViewModel = appDelegate.lightpatternModelController
+        context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
+        
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         previewImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
         
@@ -80,6 +86,7 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
 
     func configureView() {
         guard let entry = lightpatternViewModel?.currentLightPattern else { return }
+        context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
         
         name.text = entry.name
         if let filename = entry.imageFilename  {
@@ -115,6 +122,7 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
     
     func updateLightPatternEntry() {
         guard let entry = lightpatternViewModel?.currentLightPattern else { return }
+        context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
         
         entry.name = name.text ?? ""
         entry.imageFilename = filename
@@ -262,6 +270,7 @@ extension EditLightPatternVC: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         guard let entry = lightpatternViewModel?.currentLightPattern else { return }
+        context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
 
         if let code = textView.text {
             for i in 0...selectedColor.count-1 {

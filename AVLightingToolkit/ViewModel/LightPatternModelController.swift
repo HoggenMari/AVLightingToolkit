@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class LightPatternViewModel {
+class LightPatternModelController {
     
     var currentLightPattern: LightPattern?
     var fetchedResultController: NSFetchedResultsController<LightPattern>?

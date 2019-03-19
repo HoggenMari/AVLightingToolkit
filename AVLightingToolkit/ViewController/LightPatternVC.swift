@@ -12,18 +12,24 @@ import CoreData
 
 class LightPatternVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var lightPattern: UIBarButtonItem!
     
-    var viewModel: LightPatternViewModel? {
+    var viewModel: LightPatternModelController! /*? {
         didSet {
             viewModel?.initializeFetchController(self)
         }
-    }
+    }*/
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = appDelegate.lightpatternModelController
+        viewModel.initializeFetchController(self)
+        
         self.hideKeyboardWhenTappedAround()
 
         table.delegate = self

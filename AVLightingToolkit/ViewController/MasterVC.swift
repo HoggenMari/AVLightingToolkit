@@ -21,6 +21,8 @@ class MasterListItem {
 
 class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     @IBOutlet weak var editSwitch: UISwitch!
     @IBOutlet weak var listTableView: UITableView!
     
@@ -43,7 +45,7 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ContextLightPattern")
         
         controller2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LightPattern") as? LightPatternVC
-        controller2.viewModel = LightPatternViewModel()
+        controller2.viewModel = appDelegate.lightpatternModelController //LightPatternModelController()
 
 
     }

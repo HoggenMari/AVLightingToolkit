@@ -67,7 +67,7 @@ class LEDController {
     
     static let sharedInstance = LEDController()
     
-    let IP_ADDRESS = "172.20.10.2"
+    let IP_ADDRESS = "192.168.0.100"
     let PORT: Int32 = 6454
     let header = Data( hex:"4172742D4e6574305050ffffffffffff0f00")
 

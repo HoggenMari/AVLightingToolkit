@@ -40,6 +40,8 @@ protocol ContextEntryDelegate {
 
 class EditContextVC: UIViewController, OverlayViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     let heightForRow: CGFloat = 30
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -50,16 +52,16 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     var filename: String?
     
-    var contextViewModel: ContextViewModel? {
+    var contextViewModel: ContextModelController! /*ContextModelController? {
         didSet {
             configureView()
             context = contextViewModel?.currentContext?.managedObjectContext
         }
-    }
+    }*/
     
     var context: NSManagedObjectContext!
     
-    var lightpatternViewModel: LightPatternViewModel?
+    var lightpatternViewModel: LightPatternModelController!
     
     var delegate: ContextEntryDelegate?
     
@@ -71,11 +73,17 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        contextViewModel = appDelegate.contextModelController
+        lightpatternViewModel = appDelegate.lightpatternModelController
+        //context = contextViewModel?.currentContext?.managedObjectContext
+        
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         backgroundImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
         
         lightPatternTableView.delegate = self
         lightPatternTableView.dataSource = self
+        
         
         configureView()
     }
@@ -88,7 +96,9 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     func configureView() {
         guard let entry = contextViewModel?.currentContext else { return }
-
+        //configureView()
+        //context = contextViewModel?.currentContext?.managedObjectContext
+        
         name.text = entry.name
         guard let filename = entry.imageFilename else {
             return
@@ -99,6 +109,8 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     func updateContextEntry() {
         guard let entry = contextViewModel?.currentContext else { return }
+        configureView()
+        context = contextViewModel?.currentContext?.managedObjectContext
         
         entry.name = name.text ?? ""
         entry.imageFilename = filename
@@ -157,20 +169,23 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
 
 extension EditContextVC: UITableViewDelegate, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lightpatternViewModel?.numberOfLightPatterns ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:AddLightPatternToContextTableViewCell =
-            tableView.dequeueReusableCell(withIdentifier: "lightpattern") as! AddLightPatternToContextTableViewCell
+        
+        let cell:AddLightPatternToContextTableViewCell = tableView.dequeueReusableCell(withIdentifier: "lightpattern") as! AddLightPatternToContextTableViewCell
+        
         cell.initCell(at: indexPath.row)
         
-        
         let pattern = lightpatternViewModel?.lightPattern(at: indexPath)
+        
         cell.itemLabel?.text = pattern?.name
         cell.delegate = self
-        
+        cell.button?.isChecked = false
+
         if let patternLength = contextViewModel?.currentContext?.lightpatterns?.count, patternLength > 0 {
             for n in 0...patternLength-1 {
                 let p = contextViewModel?.currentContext?.lightpatterns?.allObjects[n] as! LightPattern

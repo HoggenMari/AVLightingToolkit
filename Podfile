@@ -11,6 +11,7 @@ target 'AVLightingToolkit' do
   pod 'Highlightr'
   pod 'Sync', '~> 5'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'CocoaAsyncSocket'  
 
   target 'AVLightingToolkitTests' do
     inherit! :search_paths
