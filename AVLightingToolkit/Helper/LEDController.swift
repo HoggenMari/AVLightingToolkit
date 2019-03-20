@@ -71,7 +71,7 @@ class LEDController {
     let PORT: Int32 = 6454
     let header = Data( hex:"4172742D4e6574305050ffffffffffff0f00")
 
-    var client: UDPClient?
+    //var client: UDPClient?
     var data: Data?
     weak var timer: Timer!
     
@@ -88,19 +88,19 @@ class LEDController {
     
     var code: String!
     
-    var broadcastConnection: UDPBroadcastConnection!
+    //var broadcastConnection: UDPBroadcastConnection!
     
     init() {
-        client = UDPClient(address: IP_ADDRESS, port: PORT)
+        /*client = UDPClient(address: IP_ADDRESS, port: PORT)
         //
         //UDPBroadcastConnection(port: UInt16(PORT), handler: [unowned, self] (response: (ipAddress: String, port: Int, response: [UInt8])) -> Void, in
             //print("Received from \(response.ipAddress):\(response.port):\n\n\(response.response)"))
         broadcastConnection = UDPBroadcastConnection(port: UInt16(PORT)) { (ipAddress: String, port: Int, response: [UInt8]) -> Void in
             _ = "Received from \(ipAddress):\(port):\n\n\(response)"
             //self.logView.text = log
-        }
+        }*/
         
-        timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
     func play(_ code: String) {
@@ -170,7 +170,9 @@ class LEDController {
         
         if let sendData = data {
             //client?.send(data: sendData)
-            broadcastConnection.sendBroadcast(sendData)
+            //broadcastConnection.sendBroadcast(sendData)
+            
+            UnityCommunication.sharedInstance.sendData(sendData)
         }
     
     }

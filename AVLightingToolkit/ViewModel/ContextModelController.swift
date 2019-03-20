@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import SwiftyJSON
 
 class ContextModelController {
     
@@ -133,5 +134,33 @@ class ContextModelController {
             fetchedResultController?.fetchedObjects?[indexPath.section].selected = pattern
             PersistentUtils.sharedInstance.coreDataStack.saveContext()
         }
+    }
+    
+    func sendContexts() {
+        print("test")
+        if let results = fetchedResultController?.fetchedObjects {
+            var myPlaceArray = [[String: Any]]()
+            //let json = JSON(["context"])
+            for i in 0...results.count-1 {
+                myPlaceArray.append([
+                    "id" : i,
+                    "name" : results[i].name,
+                ])
+            }
+            let jsonIndexed = JSON(myPlaceArray)
+            print(myPlaceArray)
+            print(jsonIndexed)
+            
+            
+            var data: Data
+            
+            do {
+                try data = JSONSerialization.data(withJSONObject: jsonIndexed.object, options: .prettyPrinted)
+            } catch let nserror as NSError {
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            UnityCommunication.sharedInstance.sendData(data)
+            }
+        
     }
 }

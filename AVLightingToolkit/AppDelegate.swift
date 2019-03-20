@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
         
         contextModelController = ContextModelController()
         contextModelController.initializeFetchController(self)
+        contextModelController.sendContexts()
         
         return true
     }
