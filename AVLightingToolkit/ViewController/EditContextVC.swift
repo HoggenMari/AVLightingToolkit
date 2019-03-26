@@ -52,12 +52,7 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     var filename: String?
     
-    var contextViewModel: ContextModelController! /*ContextModelController? {
-        didSet {
-            configureView()
-            context = contextViewModel?.currentContext?.managedObjectContext
-        }
-    }*/
+    var contextViewModel: ContextModelController!
     
     var context: NSManagedObjectContext!
     
@@ -76,7 +71,9 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
         
         contextViewModel = appDelegate.contextModelController
         lightpatternViewModel = appDelegate.lightpatternModelController
-        //context = contextViewModel?.currentContext?.managedObjectContext
+        
+        configureView()
+        context = contextViewModel?.currentContext?.managedObjectContext
         
         view.backgroundColor = UIColor(hue: 0, saturation: 0, brightness: 1, alpha: 0.95)
         backgroundImageButton.setIcon(icon: .googleMaterialDesign(.addAPhoto), iconSize: 60, color: .white, forState: .normal)
@@ -84,8 +81,6 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
         lightPatternTableView.delegate = self
         lightPatternTableView.dataSource = self
         
-        
-        configureView()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -96,8 +91,7 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     func configureView() {
         guard let entry = contextViewModel?.currentContext else { return }
-        //configureView()
-        //context = contextViewModel?.currentContext?.managedObjectContext
+        context = contextViewModel?.currentContext?.managedObjectContext
         
         name.text = entry.name
         guard let filename = entry.imageFilename else {
@@ -109,7 +103,6 @@ class EditContextVC: UIViewController, OverlayViewController, UIImagePickerContr
     
     func updateContextEntry() {
         guard let entry = contextViewModel?.currentContext else { return }
-        configureView()
         context = contextViewModel?.currentContext?.managedObjectContext
         
         entry.name = name.text ?? ""

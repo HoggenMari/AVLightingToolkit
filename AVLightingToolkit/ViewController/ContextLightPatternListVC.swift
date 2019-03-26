@@ -78,6 +78,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         view.backgroundColor = .clear
         return view
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContextHeaderView") as! ContextHeaderView
 

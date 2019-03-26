@@ -75,6 +75,9 @@ class ContextModelController {
                     fatalError("Error: \(error.localizedDescription)")
                 }
             PersistentUtils.sharedInstance.coreDataStack.saveContext()
+            
+            //update the unity app
+            self.sendContexts()
         }
     }
     
@@ -100,6 +103,8 @@ class ContextModelController {
         sections?.hidden = !isHidden
         PersistentUtils.sharedInstance.coreDataStack.saveContext()
         
+        //update the unity app
+        sendContexts()
     }
     
     var numberOfContexts: Int {
@@ -137,14 +142,19 @@ class ContextModelController {
     }
     
     func sendContexts() {
-        print("test")
         if let results = fetchedResultController?.fetchedObjects {
             var myPlaceArray = [[String: Any]]()
             //let json = JSON(["context"])
             for i in 0...results.count-1 {
+                
+                var contextTitle = "Context "+String(i+1)
+                if !results[i].hidden {
+                    contextTitle = results[i].name
+                }
+                
                 myPlaceArray.append([
                     "id" : i,
-                    "name" : results[i].name,
+                    "name" : contextTitle,
                 ])
             }
             let jsonIndexed = JSON(myPlaceArray)

@@ -44,11 +44,7 @@ class EditLightPatternVC: UIViewController, OverlayViewController, UIImagePicker
         }
     }
     
-    var lightpatternViewModel: LightPatternModelController! /*? {
-        didSet {
-            context = lightpatternViewModel?.currentLightPattern?.managedObjectContext
-        }
-    }*/
+    var lightpatternViewModel: LightPatternModelController!
     
     var context: NSManagedObjectContext!
     
