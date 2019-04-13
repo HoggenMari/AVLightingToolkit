@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 //import EFColorPicker
 
-class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UnityContextDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -54,6 +54,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         lightpatternViewModel = appDelegate.lightpatternModelController //LightPatternModelController()
         lightpatternViewModel.initializeFetchController(self)
         
+        UnityCommunication.sharedInstance.contextDelegate = self
         //addContextBtn.isHidden = true
         //addLightPatternBtn.isHidden = true
         
@@ -120,7 +121,35 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             cell.initCellItem(for: pattern.name, imageFileName: pattern.imageFilename, color: [pattern.color1, pattern.color2, pattern.color3], selected: selected)
         }
         
+        animateCell(cell)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        /*let layer: CAShapeLayer = CAShapeLayer()
+        let bounds = cell.bounds
+        bounds.offsetBy(dx: 30, dy: 30)
+        //let testView: UIView = UIView(frame: cell.bounds)
+        let testView: UIView = UIView(frame: bounds)
+
+        testView.layer.insertSublayer(layer, at: 0)
+        testView.backgroundColor = .clear
+        testView.layer.shadowPath = UIBezierPath(roundedRect: testView.bounds,
+                                                 cornerRadius: testView.layer.cornerRadius).cgPath
+        testView.layer.shadowColor = UIColor.black.cgColor
+        testView.layer.shadowOpacity = 0.5
+        testView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        testView.layer.shadowRadius = 1
+        testView.layer.masksToBounds = false
+        cell.backgroundView = testView*/
+        
+    }
+    
+    func contextActivated(_ id: Int) {
+        print("context activated")
+        print(id)
     }
     
     @IBAction func sliderChanged(_ sender: Any) {
@@ -128,6 +157,18 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         let defaults = UserDefaults.standard
         defaults.set(brightness, forKey: "brightness")
         LEDController.sharedInstance.setBrightness(brightness)
+    }
+    
+    fileprivate var color1 = UIColor.clear
+    fileprivate var color2 = UIColor(red: 0.1, green: 0.9, blue: 0.25, alpha: 0.5)
+    fileprivate func animateCell(_ cell: UITableViewCell) {
+        
+        cell.contentView.backgroundColor = UIColor.white
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.autoreverse, .repeat, .allowUserInteraction], animations: {
+            cell.contentView.backgroundColor = self.color2
+        }, completion: nil)
+        
     }
     
     

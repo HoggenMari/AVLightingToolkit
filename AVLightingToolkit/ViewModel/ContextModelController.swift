@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class ContextModelController {
+class ContextModelController: UnityCommunicationDelegate {
     
     var currentContext: Context?
     var childContext: NSManagedObjectContext!
@@ -23,6 +23,8 @@ class ContextModelController {
                                                              managedObjectContext: PersistentUtils.sharedInstance.coreDataStack.mainContext,
                                                              sectionNameKeyPath: nil,
                                                              cacheName: nil)
+        
+        UnityCommunication.sharedInstance.delegate = self
     }
     
     func contextFetchRequest() -> NSFetchRequest<Context> {
@@ -169,8 +171,13 @@ class ContextModelController {
             } catch let nserror as NSError {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
-            UnityCommunication.sharedInstance.sendData(data)
+
+                UnityCommunication.sharedInstance.sendDataToClients(data)
             }
         
+    }
+    
+    func newClientDidConntected() {
+        sendContexts()
     }
 }
