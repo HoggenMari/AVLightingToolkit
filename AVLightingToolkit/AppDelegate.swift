@@ -20,24 +20,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        
+        //CoreDataHelper.shared.
+        
         LEDController.sharedInstance
         UnityCommunication.sharedInstance
     
         //PersistentUtils.sharedInstance.coreDataStack.clearContext()
+
+        //PersistentUtils.sharedInstance.coreDataStack.clearContext()
         lightpatternModelController = LightPatternModelController()
         lightpatternModelController.initializeFetchController(self)
         
+        contextModelController = ContextModelController()
+        contextModelController.initializeFetchController(self)
+        
+        
+        //deleteAllData("LightPattern")
+        
+        //lightpatternModelController.deleteAllLightPatterns()
+        //contextModelController.deleteAllContexts()
+        
         if lightpatternModelController.numberOfLightPatterns <= 0 {
             PersistentUtils.sharedInstance.seedLightPattern()
+        }
+        
+        if contextModelController.numberOfContexts <= 0 {
             PersistentUtils.sharedInstance.seedContext()
         }
         
-        contextModelController = ContextModelController()
-        contextModelController.initializeFetchController(self)
         contextModelController.sendContexts()
         
         return true
     }
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

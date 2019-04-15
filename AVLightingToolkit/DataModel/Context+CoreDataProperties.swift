@@ -23,6 +23,7 @@ extension Context {
     @NSManaged public var lightpatterns: NSSet?
     @NSManaged public var selected: LightPattern?
     @NSManaged public var hidden: Bool
+    @NSManaged public var active: Bool
 
 
 }

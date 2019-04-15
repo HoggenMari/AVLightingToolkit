@@ -26,7 +26,7 @@ class ContextHeaderView: UITableViewHeaderFooterView {
     var delegate:ContextHeaderViewDelegate!
     var section:Int!
     
-    func initCellItem(for section: Int, title: String, imageFilename: String?) {
+    func initCellItem(for section: Int, title: String, imageFilename: String?, isActive: Bool) {
         deleteButton.setIcon(icon: .googleMaterialDesign(.delete), iconSize: 40, color: .white, forState: .normal)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(sectionHeaderTapped(sender:)))
         addGestureRecognizer(tapGesture)
@@ -44,12 +44,17 @@ class ContextHeaderView: UITableViewHeaderFooterView {
             image = UIImage(named: "car")
         }
         
+        if(!isActive){
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        } else {
+        gradient.colors = [UIColor.clear.cgColor, UIColor.clear.cgColor]
+        }
         gradient.locations = [0.0, 0.75, 1.25]
         gradient.startPoint = CGPoint(x: 0.0,y: 0.0)
         gradient.endPoint = CGPoint(x: 1.0,y: 0.0)
         
         gradientView.layer.insertSublayer(gradient, at: 0)
+        
         contextImage.image = image
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressed:")
@@ -80,4 +85,6 @@ class ContextHeaderView: UITableViewHeaderFooterView {
             self.delegate?.toggleHidden(at: section)
         }
     }
+    
+    
 }

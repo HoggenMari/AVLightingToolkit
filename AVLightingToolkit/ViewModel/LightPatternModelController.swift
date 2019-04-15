@@ -110,4 +110,15 @@ class LightPatternModelController {
         }
         
     }
+    
+    func deleteAllLightPatterns() {
+        
+        if numberOfLightPatterns <= 0 {
+            return
+        }
+        
+        for n in 0...numberOfLightPatterns - 1{
+            deleteLightPattern(at: (numberOfLightPatterns - 1) - n)
+        }
+    }
 }

@@ -14,7 +14,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    let heightForFooterInSection: CGFloat = 15
+    let heightForFooterInSection: CGFloat = 30
         
     @IBOutlet var lightPatternTableView: UITableView!
     @IBOutlet weak var addView: UIView!
@@ -77,6 +77,21 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
+        
+        /*let gradient = CAGradientLayer()
+        gradient.frame.size = CGSize(width: 1000, height: 15)
+        let stopColor = UIColor(red: 0.1, green: 0.8, blue: 0.05, alpha: 0.1).cgColor
+        
+        let startColor = UIColor.groupTableViewBackground.cgColor
+        
+        
+        gradient.colors = [stopColor,startColor]
+        
+        
+        gradient.locations = [0.0,0.8]
+        
+        view.layer.addSublayer(gradient)*/
+        
         return view
     }
     
@@ -85,12 +100,25 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
 
         if let context = contextViewModel.contextAtSection(section) {
             if !context.hidden {
-                headerView.initCellItem(for: section, title: context.name, imageFilename: context.imageFilename)
+                headerView.initCellItem(for: section, title: context.name, imageFilename: context.imageFilename, isActive: context.active)
             } else {
-                headerView.initCellItem(for: section, title: "Context " + String(section+1), imageFilename: nil)
+                headerView.initCellItem(for: section, title: "Context " + String(section+1), imageFilename: nil, isActive: context.active)
             }
+            
+            if context.active {
+            headerView.layer.cornerRadius = 10.0
+            headerView.layer.shadowColor = UIColor.black.cgColor
+            headerView.layer.shadowOffset = .zero
+            headerView.layer.shadowOpacity = 0.6
+            headerView.layer.shadowRadius = 10.0
+            headerView.layer.shadowPath = UIBezierPath(rect: headerView.bounds).cgPath
+            headerView.layer.shouldRasterize = true
+            }
+            
             headerView.delegate = self
         }
+        
+        
         return headerView
     }
     
@@ -121,7 +149,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             cell.initCellItem(for: pattern.name, imageFileName: pattern.imageFilename, color: [pattern.color1, pattern.color2, pattern.color3], selected: selected)
         }
         
-        animateCell(cell)
+        //animateCell(cell)
         
         return cell
     }
@@ -150,6 +178,8 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     func contextActivated(_ id: Int) {
         print("context activated")
         print(id)
+        contextViewModel.activeContext(at: id)
+
     }
     
     @IBAction func sliderChanged(_ sender: Any) {

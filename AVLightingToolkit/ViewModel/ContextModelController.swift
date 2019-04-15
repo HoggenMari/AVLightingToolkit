@@ -99,6 +99,15 @@ class ContextModelController: UnityCommunicationDelegate {
         }
     }
     
+    func deleteAllContexts() {
+        if numberOfContexts <= 0 {
+            return
+        }
+        for n in 0...numberOfContexts - 1{
+            deleteContext(at: (numberOfContexts - 1) - n)
+        }
+    }
+    
     func toggleHidde(at section: Int) {
         let sections = fetchedResultController?.fetchedObjects?[section]
         let isHidden = sections?.hidden ?? false
@@ -107,6 +116,24 @@ class ContextModelController: UnityCommunicationDelegate {
         
         //update the unity app
         sendContexts()
+    }
+    
+    func activeContext(at section: Int) {
+        let contexts = fetchedResultController?.fetchedObjects
+        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count else {
+            return
+        }
+        
+        for n in 0...sectionUpperBound - 1 {
+            let context = fetchedResultController?.fetchedObjects?[n]
+            if (section - 1 != n) {
+                context?.active = false
+            } else {
+                context?.active = true
+            }
+        }
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        
     }
     
     var numberOfContexts: Int {

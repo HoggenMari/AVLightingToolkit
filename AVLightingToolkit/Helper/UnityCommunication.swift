@@ -73,10 +73,10 @@ class UnityCommunication: NSObject, GCDAsyncUdpSocketDelegate, GCDAsyncSocketDel
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
-        print(address)
-        print("received")
+        //print(address)
+        //print("received")
         if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-            print("Received: \(str)")
+            //print("Received: \(str)")
             
         }
     }
