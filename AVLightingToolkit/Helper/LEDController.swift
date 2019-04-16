@@ -126,7 +126,7 @@ class LEDController {
             test.append(LED())
         }
         
-        loop+=1
+        loop+=5
         if(loop > 255) {
             loop = 0
         }
