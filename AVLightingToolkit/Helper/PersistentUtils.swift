@@ -76,7 +76,7 @@ class PersistentUtils {
             (imageFilename: "20181125_8(2)", name: "Direction as spatial information + effects", position:8, code: "var leds;", color1: UIColor.red, color2: nil),
             (imageFilename: "20181018_3", name: "Direction as colours + spatial information + effects", position:9, code: "var leds;", color1: UIColor.red, color2: nil),
             (imageFilename: "20181125_5(2)", name: "Direction as movements", position:10, code: "var leds;", color1: UIColor.red, color2: nil),
-            (imageFilename: "20181125_9", name: "Waiting as effects + identification with colours", position:11, code: "var leds;", color1: UIColor.red, color2: nil),
+            (imageFilename: "20181125_9", name: "Waiting as effects + identification with colours", position:11, code: "var mapToNative = function(leds, num) { return test.map(function(led, index) { if (index >= 0 && index <= 6) { return LED.setAllWithRedGreenBlue(0, 0, 0); } else if (index >= 7 && index <= 13) { return LED.setAllWithRedGreenBlue(color1.getRed() * 2 * Math.min(loop, 1 - loop), color1.getGreen() * 2 * Math.min(loop, 1 - loop), color1.getBlue() * 2 * Math.min(loop, 1 - loop)); } else if (index >= 14 && index <= 20) { return LED.setAllWithRedGreenBlue(0, 0, 0); } }) };", color1: UIColor.red, color2: nil),
             (imageFilename: "20181125_10(2)", name: "Waiting as movement + identification with colours", position:12, code: "var leds;", color1: UIColor.red, color2: nil),
             //(imageFilename: "20181125_10", name: "Waiting as movements", position:14, code: "var leds;", color1: UIColor.red, color2: nil)
 
