@@ -43,6 +43,7 @@ class ContextHeaderView: UITableViewHeaderFooterView {
         } else {
             image = UIImage(named: "car")
         }
+        contextImage.image = image
         
         if(!isActive){
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
@@ -54,8 +55,6 @@ class ContextHeaderView: UITableViewHeaderFooterView {
         gradient.endPoint = CGPoint(x: 1.0,y: 0.0)
         
         gradientView.layer.insertSublayer(gradient, at: 0)
-        
-        contextImage.image = image
         
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: "longPressed:")
         longPressRecognizer.minimumPressDuration = 3

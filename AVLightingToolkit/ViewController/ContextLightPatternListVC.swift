@@ -14,7 +14,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-    let heightForFooterInSection: CGFloat = 30
+    let heightForFooterInSection: CGFloat = 15
         
     @IBOutlet var lightPatternTableView: UITableView!
     @IBOutlet weak var addView: UIView!
@@ -106,13 +106,15 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             }
             
             if context.active {
-            headerView.layer.cornerRadius = 10.0
-            headerView.layer.shadowColor = UIColor.black.cgColor
-            headerView.layer.shadowOffset = .zero
-            headerView.layer.shadowOpacity = 0.6
-            headerView.layer.shadowRadius = 10.0
-            headerView.layer.shadowPath = UIBezierPath(rect: headerView.bounds).cgPath
-            headerView.layer.shouldRasterize = true
+                headerView.layer.cornerRadius = 10.0
+                headerView.layer.shadowColor = UIColor.black.cgColor
+                headerView.layer.shadowOffset = .zero
+                headerView.layer.shadowOpacity = 0.6
+                headerView.layer.shadowRadius = 10.0
+                headerView.layer.shadowPath = UIBezierPath(rect: headerView.bounds).cgPath
+                headerView.layer.shouldRasterize = true
+            } else {
+                headerView.layer.shadowOpacity = 0.0
             }
             
             headerView.delegate = self
@@ -146,10 +148,18 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         
         if let context = contextViewModel.contextAtSection(indexPath.section), let pattern = contextViewModel.lightPatternForContext(indexPath: indexPath) {
             let selected = context.selected?.isEqualTo(pattern) ?? false
-            cell.initCellItem(for: pattern.name, imageFileName: pattern.imageFilename, color: [pattern.color1, pattern.color2, pattern.color3], selected: selected)
+            if context.hidden {
+                cell.initCellItem(for: "Visualisation " + String(indexPath.row+1), imageFileName: pattern.imageFilename, color: [pattern.color1, pattern.color2, pattern.color3], selected: selected)
+            } else {
+                cell.initCellItem(for: pattern.name, imageFileName: pattern.imageFilename, color: [pattern.color1, pattern.color2, pattern.color3], selected: selected)
+            }
+            
+            if (selected && context.active) {
+                animateCell(cell)
+            } else {
+                cell.contentView.backgroundColor = UIColor.clear
+            }
         }
-        
-        //animateCell(cell)
         
         return cell
     }
@@ -180,6 +190,12 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         print(id)
         contextViewModel.activeContext(at: id)
 
+        DispatchQueue.main.async {
+            if id > 0 {
+                let indexPath = IndexPath(row: 0, section: id-1)
+                self.lightPatternTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
+        }
     }
     
     @IBAction func sliderChanged(_ sender: Any) {
