@@ -166,6 +166,17 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             
             if (selected && context.active) {
                 animateCell(cell)
+                print(pattern.position)
+                if let code = pattern.code {
+                    LEDController.sharedInstance.play(code)
+                }
+                if let color1 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color1 {
+                    LEDController.sharedInstance.setColor1(UIColor.color(withData: color1))
+                }
+                
+                if let color2 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color2 {
+                    LEDController.sharedInstance.setColor2(UIColor.color(withData: color2))
+                }
             } else {
                 cell.contentView.backgroundColor = UIColor.clear
             }
@@ -240,7 +251,7 @@ extension ContextLightPatternListVC: OverlayHost {
 extension ContextLightPatternListVC: CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath) {
         contextViewModel.selectLightPattern(indexPath: indexPath)
-        LEDController.sharedInstance.play(contextViewModel.lightPatternForContext(indexPath: indexPath)?.code ?? "")
+        /*LEDController.sharedInstance.play(contextViewModel.lightPatternForContext(indexPath: indexPath)?.code ?? "")
         
         if let color1 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color1 {
             LEDController.sharedInstance.setColor1(UIColor.color(withData: color1))
@@ -248,7 +259,7 @@ extension ContextLightPatternListVC: CustomTableViewCellDelegate {
         
         if let color2 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color2 {
             LEDController.sharedInstance.setColor2(UIColor.color(withData: color2))
-        }
+        }*/
 
     
         /*guard let entry = contextViewModel.lightPatternForContext(indexPath: selectedIndexPath) else { return }

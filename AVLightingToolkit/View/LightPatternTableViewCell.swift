@@ -83,9 +83,9 @@ class PlayButton: UIButton {
     public var isChecked: Bool = false {
         didSet{
             if isChecked == true {
-                self.setIcon(icon: .googleMaterialDesign(.playCircleFilled), iconSize: 35, color: .darkGray, forState: .normal)
+                self.setIcon(icon: .googleMaterialDesign(.radioButtonChecked), iconSize: 35, color: .darkGray, forState: .normal)
             } else {
-                self.setIcon(icon: .googleMaterialDesign(.playCircleOutline), iconSize: 35, color: .gray, forState: .normal)
+                self.setIcon(icon: .googleMaterialDesign(.radioButtonUnchecked), iconSize: 35, color: .gray, forState: .normal)
             }
         }
     }

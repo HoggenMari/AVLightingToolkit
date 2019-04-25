@@ -120,7 +120,7 @@ class ContextModelController: UnityCommunicationDelegate {
     
     func deactivateAllContexts() {
         let contexts = fetchedResultController?.fetchedObjects
-        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count else {
+        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count, sectionUpperBound > 0 else {
             return
         }
         
