@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NSFetchedResultsControlle
         contextModelController = ContextModelController()
         contextModelController.initializeFetchController(self)
         
+        contextModelController.deactivateAllContexts()
         
         //deleteAllData("LightPattern")
         

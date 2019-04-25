@@ -118,6 +118,20 @@ class ContextModelController: UnityCommunicationDelegate {
         sendContexts()
     }
     
+    func deactivateAllContexts() {
+        let contexts = fetchedResultController?.fetchedObjects
+        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count else {
+            return
+        }
+        
+        for n in 0...sectionUpperBound - 1 {
+            let context = fetchedResultController?.fetchedObjects?[n]
+            context?.active = false
+            PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        }
+
+    }
+    
     func activeContext(at section: Int) {
         let contexts = fetchedResultController?.fetchedObjects
         guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count else {
