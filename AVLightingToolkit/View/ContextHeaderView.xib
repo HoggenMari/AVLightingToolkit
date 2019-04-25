@@ -69,6 +69,6 @@
         </view>
     </objects>
     <resources>
-        <image name="car" width="682.08001708984375" height="183.36000061035156"/>
+        <image name="car" width="1496" height="160"/>
     </resources>
 </document>

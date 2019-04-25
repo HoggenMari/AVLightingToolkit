@@ -42,6 +42,11 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
+        let defaults = UserDefaults.standard
+        editMode = defaults.bool(forKey: "editMode")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.editModeChanged), name: NSNotification.Name(rawValue: "editModeChanged"), object: nil)
+        
         let headerNib = UINib.init(nibName: "ContextHeaderView", bundle: Bundle.main)
         lightPatternTableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "ContextHeaderView")
         
@@ -55,42 +60,45 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         lightpatternViewModel.initializeFetchController(self)
         
         UnityCommunication.sharedInstance.contextDelegate = self
-        //addContextBtn.isHidden = true
-        //addLightPatternBtn.isHidden = true
         
+        displayToolbar(editMode)
+        changeHeaderViews(editMode)
+
+    }
+    
+    func displayToolbar(_ editMode: Bool) {
         if (editMode) {
-        toolbar.isHidden = false
-        addContextBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.details), iconColor: .gray, postfixText: "Add Context", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
-        addContextBtn.addTarget(self, action: #selector(addContextButtonTapped), for: .touchUpInside)
-        
-        addLightPatternBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.blurOn), iconColor: .gray, postfixText: "Add Light Pattern", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
-        addLightPatternBtn.addTarget(self, action: #selector(addLightingPatternTapped), for: .touchUpInside)
+            toolbar.isHidden = false
+            addContextBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.details), iconColor: .gray, postfixText: "Add Context", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
+            addContextBtn.addTarget(self, action: #selector(addContextButtonTapped), for: .touchUpInside)
+            
+            addLightPatternBtn.setIcon(prefixText: "", prefixTextColor: .gray, icon: .googleMaterialDesign(.blurOn), iconColor: .gray, postfixText: "Add Light Pattern", postfixTextColor: .gray, backgroundColor: .clear, forState: .normal, textSize: 18, iconSize: 18)
+            addLightPatternBtn.addTarget(self, action: #selector(addLightingPatternTapped), for: .touchUpInside)
         } else {
             toolbar.isHidden = true
             let defaults = UserDefaults.standard
             let brightness = defaults.double(forKey: "brightness")
             brightnessSlider.value = Float(brightness)
         }
+    }
+    
+    func changeHeaderViews(_ editMode: Bool) {
+        //var subviews = [UIView]()
+        let sectionCount = lightPatternTableView.numberOfSections
         
+        /// loop through available sections
+        for section in 0..<sectionCount {
+            
+            /// get each section headers
+            let sectionHeader = self.tableView(lightPatternTableView, viewForHeaderInSection: section) as! ContextHeaderView
+            
+            sectionHeader.setEditMode(editMode)
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
-        
-        /*let gradient = CAGradientLayer()
-        gradient.frame.size = CGSize(width: 1000, height: 15)
-        let stopColor = UIColor(red: 0.1, green: 0.8, blue: 0.05, alpha: 0.1).cgColor
-        
-        let startColor = UIColor.groupTableViewBackground.cgColor
-        
-        
-        gradient.colors = [stopColor,startColor]
-        
-        
-        gradient.locations = [0.0,0.8]
-        
-        view.layer.addSublayer(gradient)*/
         
         return view
     }
@@ -118,6 +126,8 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
             }
             
             headerView.delegate = self
+            headerView.setEditMode(editMode)
+
         }
         
         
@@ -164,27 +174,6 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        /*let layer: CAShapeLayer = CAShapeLayer()
-        let bounds = cell.bounds
-        bounds.offsetBy(dx: 30, dy: 30)
-        //let testView: UIView = UIView(frame: cell.bounds)
-        let testView: UIView = UIView(frame: bounds)
-
-        testView.layer.insertSublayer(layer, at: 0)
-        testView.backgroundColor = .clear
-        testView.layer.shadowPath = UIBezierPath(roundedRect: testView.bounds,
-                                                 cornerRadius: testView.layer.cornerRadius).cgPath
-        testView.layer.shadowColor = UIColor.black.cgColor
-        testView.layer.shadowOpacity = 0.5
-        testView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        testView.layer.shadowRadius = 1
-        testView.layer.masksToBounds = false
-        cell.backgroundView = testView*/
-        
-    }
-    
     func contextActivated(_ id: Int) {
         print("context activated")
         print(id)
@@ -196,6 +185,14 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
                 self.lightPatternTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             }
         }
+    }
+    
+    @objc func editModeChanged(notification: NSNotification) {
+        //Insert code here
+        editMode = !editMode
+        displayToolbar(editMode)
+        changeHeaderViews(editMode)
+        //self.view.setNeedsDisplay()
     }
     
     @IBAction func sliderChanged(_ sender: Any) {

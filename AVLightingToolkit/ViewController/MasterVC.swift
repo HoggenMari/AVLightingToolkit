@@ -35,6 +35,11 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        let editMode = defaults.bool(forKey: "editMode")
+        
+        editSwitch.isOn = editMode
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         
@@ -73,11 +78,9 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let defaults = UserDefaults.standard
         defaults.set((sender as! UISwitch).isOn, forKey: "editMode")
-        
-        /*let defaults = UserDefaults.standardUserDefaults()
-        if let name = defaults.stringForKey("editMode") {
-            print(name)
-        }*/
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editModeChanged"), object: nil)
+        //self.listTableView.reloadData()
+        //splitViewController?.showDetailViewController(controller2, sender: nil)
     }
     
     

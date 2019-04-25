@@ -40,6 +40,9 @@ class PersistentUtils {
             newContext.position = Int16(context.position)
             newContext.hidden = true
             newContext.active = false
+            if (newContext.position == 1) {
+                newContext.active = true
+            }
             
             for lp in context.lightpattern {
                 let lightPattern1 = allLightPatterns.filter({ (l: LightPattern) -> Bool in

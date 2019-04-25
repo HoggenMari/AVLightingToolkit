@@ -85,5 +85,10 @@ class ContextHeaderView: UITableViewHeaderFooterView {
         }
     }
     
+    func setEditMode(_ isActive: Bool) {
+        deleteButton.isHidden = !isActive
+        //self.setNeedsDisplay()
+    }
+    
     
 }
