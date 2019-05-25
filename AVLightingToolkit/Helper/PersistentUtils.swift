@@ -27,9 +27,9 @@ class PersistentUtils {
         }).first
         
         let contexts = [
-            (imageFilename: "context1", name: "Car is driving and will slow down", position: 1, lightpattern: ["Speed as colours", "Speed as colours vertically", "Speed as colours horizontally", "Speed as spatial information", "Speed as spatial information + effects"]),
-            (imageFilename: "context2", name: "Car is detecting another person", position: 2, lightpattern: ["Notification as effects", "Notification as colours + effects"]),
-            (imageFilename: "context3", name: "Car is indicating to pull down", position: 3, lightpattern: ["Direction as spatial information", "Direction as spatial information + effects", "Direction as colours + spatial information + effects", "Direction as movements"]),
+            (imageFilename: "context1", name: "Recognize pedestrian and give way", position: 1, lightpattern: ["Speed as colours", "Speed as colours vertically", "Speed as colours horizontally", "Speed as spatial information", "Speed as spatial information + effects"]),
+            (imageFilename: "context2", name: "Car is speeding up", position: 2, lightpattern: ["Notification as effects", "Notification as colours + effects"]),
+            (imageFilename: "context3", name: "Car is indicating to pull over", position: 3, lightpattern: ["Direction as spatial information", "Direction as spatial information + effects", "Direction as colours + spatial information + effects", "Direction as movements"]),
             (imageFilename: "context4", name: "Car is picking up a person", position: 4, lightpattern: ["Waiting as effects + identification with colours", "Waiting as movement + identification with colours"])
         ]
         
