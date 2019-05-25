@@ -25,6 +25,7 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var editSwitch: UISwitch!
     @IBOutlet weak var listTableView: UITableView!
+    @IBOutlet weak var tangibleSwitch: UISwitch!
     
     var masterListItems: [MasterListItem] = []
     
@@ -40,12 +41,17 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         editSwitch.isOn = editMode
         
+        let tangibleMode = defaults.bool(forKey: "tangibleMode")
+        
+        tangibleSwitch.isOn = defaults.bool(forKey: "tangibleMode")
+
+        
         listTableView.delegate = self
         listTableView.dataSource = self
         
         masterListItems.append(MasterListItem.init(description: "All LightPatterns"))
         masterListItems.append(MasterListItem.init(description: "Configuration 1"))
-        masterListItems.append(MasterListItem.init(description: "Configuration 2"))
+        //masterListItems.append(MasterListItem.init(description: "Configuration 2"))
         
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ContextLightPattern")
         
@@ -81,6 +87,13 @@ class MasterVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editModeChanged"), object: nil)
         //self.listTableView.reloadData()
         //splitViewController?.showDetailViewController(controller2, sender: nil)
+    }
+    
+    
+    @IBAction func tangibleSwitchChanged(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        defaults.set((sender as! UISwitch).isOn, forKey: "tangibleMode")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tangibleModeChanged"), object: nil)
     }
     
     

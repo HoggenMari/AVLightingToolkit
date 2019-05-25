@@ -150,6 +150,24 @@ class ContextModelController: UnityCommunicationDelegate {
         
     }
     
+    func activateContext(at section: Int) {
+        let contexts = fetchedResultController?.fetchedObjects
+        guard let sectionUpperBound = fetchedResultController?.fetchedObjects?.count else {
+            return
+        }
+        
+        for n in 0...sectionUpperBound - 1 {
+            let context = fetchedResultController?.fetchedObjects?[n]
+            if (section - 1 != n) {
+                context?.active = false
+            } else {
+                context?.active = true
+            }
+        }
+        PersistentUtils.sharedInstance.coreDataStack.saveContext()
+        sendContexts()
+    }
+    
     var numberOfContexts: Int {
         if let results = fetchedResultController?.fetchedObjects {
             return results.count
@@ -195,9 +213,12 @@ class ContextModelController: UnityCommunicationDelegate {
                     contextTitle = results[i].name
                 }
                 
+                var active = results[i].active
+                
                 myPlaceArray.append([
                     "id" : i,
                     "name" : contextTitle,
+                    "active" : active
                 ])
             }
             let jsonIndexed = JSON(myPlaceArray)

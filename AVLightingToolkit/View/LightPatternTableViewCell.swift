@@ -49,6 +49,12 @@ class LightPatternTableViewCell: UITableViewCell {
         
         radioButton.addTarget(self, action: #selector(self.radioButtonTapped), for: .touchUpInside)
         radioButton.isChecked = selected
+        
+        let defaults = UserDefaults.standard
+        let tangibleMode = defaults.bool(forKey: "tangibleMode")
+        
+        radioButton.isHidden = !tangibleMode
+        
     }
     
     @objc func radioButtonTapped(_ radioButton: UIButton) {

@@ -100,7 +100,7 @@ class LEDController {
             //self.logView.text = log
         }*/
         
-        timer = Timer.scheduledTimer(timeInterval: 0.04, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
     }
     
     func play(_ code: String) {

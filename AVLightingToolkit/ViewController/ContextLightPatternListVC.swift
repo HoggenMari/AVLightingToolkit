@@ -36,6 +36,7 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
     var selectedColorIndex: Int!
     
     var editMode = true
+    var tangibleMode = true
     var brightness = 0.5
     
     override func viewDidLoad() {
@@ -44,8 +45,11 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         
         let defaults = UserDefaults.standard
         editMode = defaults.bool(forKey: "editMode")
+        tangibleMode = defaults.bool(forKey: "tangibleMode")
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.editModeChanged), name: NSNotification.Name(rawValue: "editModeChanged"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.tangibleModeChanged), name: NSNotification.Name(rawValue: "tangibleModeChanged"), object: nil)
         
         let headerNib = UINib.init(nibName: "ContextHeaderView", bundle: Bundle.main)
         lightPatternTableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "ContextHeaderView")
@@ -206,6 +210,10 @@ class ContextLightPatternListVC: UIViewController, UITableViewDelegate, UITableV
         //self.view.setNeedsDisplay()
     }
     
+    @objc func tangibleModeChanged(notification: NSNotification) {
+        tangibleMode = !tangibleMode
+    }
+    
     @IBAction func sliderChanged(_ sender: Any) {
         brightness = Double((sender as! UISlider).value)
         let defaults = UserDefaults.standard
@@ -251,27 +259,12 @@ extension ContextLightPatternListVC: OverlayHost {
 extension ContextLightPatternListVC: CustomTableViewCellDelegate {
     func didToggleRadioButton(_ indexPath: IndexPath) {
         contextViewModel.selectLightPattern(indexPath: indexPath)
-        /*LEDController.sharedInstance.play(contextViewModel.lightPatternForContext(indexPath: indexPath)?.code ?? "")
         
-        if let color1 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color1 {
-            LEDController.sharedInstance.setColor1(UIColor.color(withData: color1))
+        if (!tangibleMode) {
+            print("activate light pattern")
+            print(indexPath.section)
+            contextViewModel.activateContext(at: indexPath.section+1)
         }
-        
-        if let color2 = contextViewModel.lightPatternForContext(indexPath: indexPath)?.color2 {
-            LEDController.sharedInstance.setColor2(UIColor.color(withData: color2))
-        }*/
-
-    
-        /*guard let entry = contextViewModel.lightPatternForContext(indexPath: selectedIndexPath) else { return }
-        if selectedColorIndex == 0 {
-            entry.color1 = selectedColor.encode()
-            LEDController.sharedInstance.setColor1(selectedColor)
-        } else if selectedColorIndex == 1 {
-            entry.color2 = selectedColor.encode()
-            LEDController.sharedInstance.setColor2(selectedColor)
-        } else if selectedColorIndex == 2 {
-            entry.color3 = selectedColor.encode()
-        }*/
 
     }
     
