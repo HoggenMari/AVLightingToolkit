@@ -490,7 +490,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/Highlightr/Highlightr.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftIcons/SwiftIcons.framework",
@@ -511,7 +511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVLightingToolkit/Pods-AVLightingToolkit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E9ED80B61E09EBE08FFDF4E0 /* [CP] Check Pods Manifest.lock */ = {
@@ -818,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = .AVLightingToolkitShared;
+				PRODUCT_BUNDLE_IDENTIFIER = ".Shared-AVLightingToolkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
@@ -839,7 +839,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = .AVLightingToolkitShared;
+				PRODUCT_BUNDLE_IDENTIFIER = ".Shared-AVLightingToolkit";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
